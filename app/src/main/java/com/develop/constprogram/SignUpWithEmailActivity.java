@@ -1,13 +1,14 @@
 package com.develop.constprogram;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class SignUpWithEmailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up_first);
+        setContentView(R.layout.activity_sign_up_with_email);
     }
 }

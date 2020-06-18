@@ -3,5 +3,14 @@
 
     <string name="facebook_app_id">938335779936885</string>
     <string name="fb_login_protocol_scheme">fb938335779936885</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="strAppName">Haitian Event</string>
+    <string name="strWelcomeSignUp">Welcome</string>
+    <string name="strEmailSignUp">Email</string>
+    <string name="myname_example_com">myname@example.com</string>
+    <string name="app_icon">App Icon</string>
+    <string name="strContinue">Continue</string>
+    <string name="strContinueFacebook">Contibue with Facebook</string>
 
 </resources>
