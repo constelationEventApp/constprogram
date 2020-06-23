@@ -13,4 +13,25 @@
     <string name="strContinue">Continue</string>
     <string name="strContinueFacebook">Contibue with Facebook</string>
 
+    <string name="strPassword">Password</string>
+    <string name="strEmail">Email</string>
+    <string name="strLogin">Login</string>
+    <string name="strForgotPassword">Forget Password ?</string>
+    <string name="strRequestAccount">Don\'t have an account ?</string>
+    <string name="strCreateAccount">"  Create One."</string>
+    <string name="strFindEventWelcome">"Find neearby events "</string>
+    <string name="strButtonLogin">Login</string>
+    <string name="strEventTitle">Event Title</string>
+    <string name="strEventType">Type of event</string>
+    <string name="strOrganizer">Organizer</string>
+    <string name="strStartDate">Start Date</string>
+    <string name="strEndDate">End Date</string>
+    <string name="strStartTime">Start Time</string>
+    <string name="strEndTime">End Time</string>
+    <string name="strAddress">Pick Address</string>
+    <string name="strNext">Next</string>
+    <string name="strAddress2">"    Pick Address"</string>
+    <string name="strEventSummary">Event Summary</string>
+    <string name="strImageEvent">Image</string>
+
 </resources>
