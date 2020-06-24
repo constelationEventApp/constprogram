@@ -12,5 +12,10 @@
     <string name="app_icon">App Icon</string>
     <string name="strContinue">Continue</string>
     <string name="strContinueFacebook">Contibue with Facebook</string>
+    <string name="strDateProgramList">Dimanche 22 Septembre 2019 - 18h45</string>
+
+    <string name="strNameProgramList">Now or Nerver with Help Students</string>
+    <string name="strAdressProgramList">Cool Corner</string>
+
 
 </resources>
