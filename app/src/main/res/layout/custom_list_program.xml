@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   android:layout_margin="5dp"
+    android:background="@drawable/custom_program_list"
+    android:descendantFocusability="blocksDescendants"
+    android:outlineSpotShadowColor="@color/bleu_fonce_transparent"
+>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <ImageView
+        android:id="@+id/imProgramList"
+        android:layout_width="@dimen/dimImgProgramListWidth"
+        android:layout_height="@dimen/dimImgProgramListHeight"
+        android:padding="0dp"
+        android:background="@drawable/img"/>
+
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtDateProgramList"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:text="@string/strDateProgramList"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:padding="2dp"
+            android:textColor="@color/red_transparent"
+            android:textSize="@dimen/dimDateProgramList"
+            />
+        <TextView
+            android:id="@+id/txtNameProgramList"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:text="@string/strNameProgramList"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/bleu_fonce_transparent"
+            android:textSize="@dimen/dimNameProgramList"/>
+        <TextView
+            android:id="@+id/txtAdressProgramList"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/strAdressProgramList"
+            android:textColor="@color/bleu_fonce_transparent"
+            android:textSize="@dimen/dimAddressProgramList" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimFaShProgramListMargin"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imbShareProgramList"
+                android:layout_width="@dimen/dimFaShProgramList"
+                android:layout_height="@dimen/dimFaShProgramList"
+                android:padding="5dp"
+                android:background="#00000000"/>
+
+            <ImageButton
+                android:id="@+id/imbFavoriteProgramList"
+                android:layout_width="@dimen/dimFaShProgramList"
+                android:layout_height="@dimen/dimFaShProgramList"
+                android:padding="5dp"
+                android:layout_marginLeft="@dimen/dimMarginLeftShareProgramList"/>
+            <TextView
+                android:id="@+id/identifiantProgramList"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="identifiant"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="sizeAdressProgramList">22</integer>
+    <integer name="sizeDateProgramList">15</integer>
+    <integer name="sizeNameProgramList">17</integer>
+
+    <integer name="sizeAdressProgramDashboard">22</integer>
+    <integer name="sizeDateProgramDashboard">18</integer>
+    <integer name="sizeNameProgramDashboard">24</integer>
+
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimDateProgramList">15sp</dimen>
+    <dimen name="dimNameProgramList">25sp</dimen>
+    <dimen name="dimAddressProgramList">22sp</dimen>
+    <dimen name="dimFaShProgramList">35dp</dimen>
+    <dimen name="dimFaShProgramListMargin">130dp</dimen>
+
+    <dimen name="dimImgProgramListWidth">130dp</dimen>
+    <dimen name="dimImgProgramListHeight">130dp</dimen>
+
+    <dimen name="dimMarginLeftShareProgramList">10dp</dimen>
+
+
+
+
+
+
+</resources>

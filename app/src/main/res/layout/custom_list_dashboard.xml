@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@drawable/custom_program_list"
+    android:descendantFocusability="blocksDescendants"
+    android:outlineSpotShadowColor="@color/bleu_fonce_transparent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/imProgramDashboard"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimImgProgramListHeight"
+            android:padding="0dp"
+            android:background="@drawable/img"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtDateProgramDashboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strDateProgramList"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:padding="2dp"
+                    android:textColor="@color/red_transparent"
+                    android:textSize="@dimen/dimDateProgramList"
+                    />
+                <TextView
+                    android:id="@+id/txtNameProgramDashboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strNameProgramList"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/bleu_fonce_transparent"
+                    android:textSize="@dimen/dimNameProgramList"/>
+                <TextView
+                    android:id="@+id/txtAdressProgramDashboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/strAdressProgramList"
+                    android:textColor="@color/bleu_fonce_transparent"
+                    android:textSize="@dimen/dimAddressProgramList" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/imbShareProgramDashboard"
+                    android:layout_width="@dimen/dimFaShProgramList"
+                    android:layout_height="@dimen/dimFaShProgramList"
+                    android:layout_marginLeft="@dimen/dimMarginLeftShareProgramList"
+                    android:background="#00000000"/>
+                />
+
+                <ImageButton
+                    android:id="@+id/imbFavoriteProgramDashboard"
+                    android:layout_width="@dimen/dimFaShProgramList"
+                    android:layout_height="@dimen/dimFaShProgramList"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="@dimen/dimMarginLeftShareProgramList"
+                    android:background="#00000000"/>
+                <TextView
+                    android:id="@+id/identifiantProgramDashboard"
+                    android:layout_width="@dimen/dimFaShProgramListMargin"
+                    android:layout_height="@dimen/dimFaShProgramListMargin"
+                    android:layout_marginTop="20dp"
+                    android:text="identifiant"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>
