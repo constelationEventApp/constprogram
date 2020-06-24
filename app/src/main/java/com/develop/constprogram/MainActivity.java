@@ -32,14 +32,10 @@ Button btn, btnListDashboard;
         btnListDashboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,Dashboard.class);
+                Intent intent=new Intent(MainActivity.this,WelcomeActivity.class);
                 startActivity(intent);
             }
         });
-        /*list= (ListView) findViewById(R.id.list_program);
-        adapter = new ArrayAdapter(this,
-                android.R.layout.simple_list_item_1,values);
-        // Assign adapter to ListView
-        list.setAdapter(adapter);*/
+
     }
 }
