@@ -12,4 +12,6 @@
     <color name="white">#FFFFFF</color>
     <color name="gray">#D3D3D3</color>
     <color name="black">#000000</color>
+    <color name="red_transparent">#AAF61459</color>
+    <color name="bleu_fonce_transparent">#88021C41</color>
 </resources>
