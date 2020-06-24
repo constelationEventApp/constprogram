@@ -124,6 +124,13 @@ public class EventInformationFirstActivity extends AppCompatActivity implements 
             startActivity(home);
             finish();
         }
+
+        @Override
+        public void onBackPressed() {
+            Intent intent = new Intent(EventInformationFirstActivity.this, WelcomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
 

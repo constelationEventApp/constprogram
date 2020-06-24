@@ -8,23 +8,15 @@
     <string name="strAppName">Haitian Event</string>
     <string name="strWelcomeSignUp">Welcome</string>
     <string name="strEmailSignUp">Email</string>
-    <string name="myname_example_com">myname@example.com</string>
     <string name="app_icon">App Icon</string>
     <string name="strContinue">Continue</string>
-    <string name="strContinueFacebook">Contibue with Facebook</string>
-    <string name="strDateProgramList">Dimanche 22 Septembre 2019 - 18h45</string>
-
-    <string name="strNameProgramList">Now or Nerver with Help Students</string>
-    <string name="strAdressProgramList">Cool Corner</string>
-
-
     <string name="strPassword">Password</string>
     <string name="strEmail">Email</string>
     <string name="strLogin">Login</string>
     <string name="strForgotPassword">Forget Password ?</string>
     <string name="strRequestAccount">Don\'t have an account ?</string>
-    <string name="strCreateAccount">"  Create One."</string>
-    <string name="strFindEventWelcome">"Find neearby events "</string>
+    <string name="strCreateAccount">"Create One."</string>
+    <string name="strFindEventWelcome">"Find nearby events "</string>
     <string name="strButtonLogin">Login</string>
     <string name="strEventTitle">Event Title</string>
     <string name="strEventType">Type of event</string>
@@ -38,5 +30,29 @@
     <string name="strAddress2">"    Pick Address"</string>
     <string name="strEventSummary">Event Summary</string>
     <string name="strImageEvent">Image</string>
+
+    <string name="strCtnGoogle">Continue with Google</string>
+    <string name="strCtnFacebook">Continue with Facebook</string>
+    <string name="strEmailSignup">Email</string>
+    <string name="strPasswordEnter">Password</string>
+    <string name="strConfirmPassword">Confirm password</string>
+    <string name="strFirstName">First name</string>
+    <string name="strLastName">Last name</string>
+    <string name="strTitle">Title</string>
+    <string name="strSignUp">Sign up</string>
+    <string name="strDateProgramList"></string>
+    <string name="strNameProgramList"></string>
+    <string name="strAdressProgramList"></string>
+
+
+
+
+    <string name="strCompany">Company</string>
+    <string name="strTerm">"        I accept ConstEvent Term of Service
+        and Privacy Policy"</string>
+    <string name="strGender">Gender</string>
+    <string name="strMale">Male</string>
+    <string name="strFemale">Female</string>
+
 
 </resources>

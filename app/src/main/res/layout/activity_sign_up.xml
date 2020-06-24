@@ -1,9 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingTop="100dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="30dp"
     tools:context=".SignUpActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/editTextTextEmailAddress2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/inputfield"
+        android:ems="10"
+        android:fontFamily="monospace"
+        android:hint="@string/strEmailSignup"
+        android:importantForAutofill="no"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="15dp"
+        android:autofillHints=""
+        android:background="@drawable/inputfield"
+        android:ems="10"
+        android:fontFamily="monospace"
+        android:hint="@string/strPasswordEnter"
+        android:inputType="textPassword"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="30dp"
+        android:autofillHints=""
+        android:background="@drawable/inputfield"
+        android:ems="10"
+        android:fontFamily="monospace"
+        android:hint="@string/strConfirmPassword"
+        android:inputType="textPassword"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" />
+
+    <Button
+        android:id="@+id/btn_sign_up_id_sign_up"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/button"
+        android:fontFamily="monospace"
+        android:onClick="onClickSignUp"
+        android:shadowColor="@color/bleu_fonce"
+        android:text="@string/strSignUp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/btn_ctn_facebook_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/inputfield"
+        android:drawableStart="@drawable/icon_facebook"
+        android:fontFamily="monospace"
+        android:paddingStart="10dp"
+        android:paddingEnd="5dp"
+        android:text="@string/strCtnFacebook"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btn_ctn_google_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/inputfield"
+        android:drawableStart="@drawable/ic_google"
+        android:fontFamily="monospace"
+        android:paddingStart="10dp"
+        android:paddingEnd="40dp"
+        android:text="@string/strCtnGoogle"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="18sp" />
+</LinearLayout>
