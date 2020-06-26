@@ -35,7 +35,7 @@ public class CreateAccountActivity extends AppCompatActivity {
    private ImageView imageProfile;
    private  UserInfoModel userInfoModel;
 
-    private String uFirstname, uLastname, uEmail, uTitle, uCompany, uGender, uImage;
+    private String uFirstname, uLastname, uEmail, uTitle, uCompany, uGender, uImage, uIdentity;
 
 
 
@@ -76,6 +76,9 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private void getInfoFromSignIn() {
         user = FirebaseAuth.getInstance().getCurrentUser();
+
+        //Getting User id
+        uIdentity=user.getUid();
         List<? extends UserInfo> infos = user.getProviderData();
         for (UserInfo ui : infos) {
             switch (ui.getProviderId()){
@@ -120,6 +123,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         userInfoModel.setuCompany(tvCompany.getText().toString());
         userInfoModel.setuGender(uGender);
         userInfoModel.setuImage(uImage);
+        userInfoModel.setuIdentity(uIdentity);
 
         userInfoModel.insertUser(userInfoModel);
         startActivity(new Intent(getApplicationContext(), WaitingActivity.class));

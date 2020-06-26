@@ -17,7 +17,7 @@ import com.google.firebase.storage.StorageReference;
 import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 public class UserInfoModel {
-    private String uFirstname, uLastname, uEmail, uTitle, uCompany, uGender, uImage;
+    private String uFirstname, uLastname, uEmail, uTitle, uCompany, uGender, uImage, uIdentity;
     private StorageReference mStorageRef;
     CollectionReference mFireStore;
     private Context context;
@@ -27,7 +27,7 @@ public class UserInfoModel {
 
     //Constructors
 
-    public UserInfoModel(String uFirstname, String uLastname, String uEmail, String uTitle, String uCompany, String uGender, String uImage) {
+    public UserInfoModel(String uFirstname, String uLastname, String uEmail, String uTitle, String uCompany, String uGender, String uImage, String uIdentity) {
         this.uFirstname = uFirstname;
         this.uLastname = uLastname;
         this.uEmail = uEmail;
@@ -35,6 +35,7 @@ public class UserInfoModel {
         this.uCompany = uCompany;
         this.uGender = uGender;
         this.uImage = uImage;
+        this.uIdentity=uIdentity;
        // mStorageRef= FirebaseStorage.getInstance().getReference("uploads");
         mFireStore= FirebaseFirestore.getInstance().collection("users");
     }
@@ -48,19 +49,17 @@ public class UserInfoModel {
 
     public void insertUser(UserInfoModel user){
 
-        mFireStore.add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        mFireStore.document(user.getuIdentity()).set(user)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                       // Toast.makeText(context, "Data is inserted", Toast.LENGTH_SHORT).show();
+                    public void onSuccess(Void aVoid) {
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
                     }
-                });;
+                });
     }
 
 
@@ -121,5 +120,13 @@ public class UserInfoModel {
 
     public void setuImage(String uImage) {
         this.uImage = uImage;
+    }
+
+    public String getuIdentity() {
+        return uIdentity;
+    }
+
+    public void setuIdentity(String uIdentity) {
+        this.uIdentity = uIdentity;
     }
 }

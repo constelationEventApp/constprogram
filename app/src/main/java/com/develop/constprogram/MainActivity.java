@@ -23,7 +23,8 @@ Button btn, btnListDashboard, pickImage;
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,Recycle.class);
+              //  Intent intent=new Intent(MainActivity.this,FragmentUsageActivity.class);
+                Intent intent=new Intent(MainActivity.this,FavoriteProgramActivity.class);
                 startActivity(intent);
             }
         });

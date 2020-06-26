@@ -42,8 +42,20 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
         holder.btnShare.setImageResource(R.drawable.share);
         holder.btnShare.setBackground(null);
 
-        holder.btnFavorite.setImageResource(R.drawable.favorite);
+        switch (activityName){
+            case "Recycle": case "Dashboard":
+                holder.btnFavorite.setImageResource(R.drawable.favorite);
+                break;
+            case "Favorite":
+                holder.btnFavorite.setImageResource(R.drawable.delete_program_from_favorite);
+                break;
+            default:
+
+        }
+
         holder.btnFavorite.setBackground(null);
+
+
 
         Picasso.get().load(model.getProgramImage().toString())
                 .placeholder(R.drawable.image_holder)
@@ -77,7 +89,7 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
     public ProgramHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
         switch (activityName){
-            case "Recycle":
+            case "Recycle": case "Favorite":
                  v= LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list_program,parent,false);
 
                 break;
@@ -85,6 +97,7 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
                  v= LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list_dashboard,parent,false);
 
                 break;
+
             default:
                  v= LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list_program,parent,false);
 
@@ -108,7 +121,7 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
             context = itemView.getContext();
 
             switch (activityName){
-                case "Recycle":
+                case "Recycle":  case "Favorite":
                     programTitle=itemView.findViewById(R.id.txtNameProgramList);
                     programDate=itemView.findViewById(R.id.txtDateProgramList);
                     programAddress=itemView.findViewById(R.id.txtAdressProgramList);
@@ -126,6 +139,8 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
                     btnShare=itemView.findViewById(R.id.imbShareProgramDashboard);
                     btnFavorite=itemView.findViewById(R.id.imbFavoriteProgramDashboard);
                     break;
+
+
                 default:
 
             }
