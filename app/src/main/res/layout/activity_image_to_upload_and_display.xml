@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ImageToUploadAndDisplay">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/chooseImage"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Choose File"
+            android:background="@drawable/buttoninfo"
+            android:layout_margin="20dp"
+            android:padding="5dp"
+            android:onClick="onButtonChooseClick"/>
+        <TextView
+            android:id="@+id/imageLink"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+
+            />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/placeImage"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/image_holder"
+        android:onClick="onButtonChooseClick"/>
+    <ProgressBar
+        android:id="@+id/uploadImageProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/uploadImage"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Upload"
+
+            android:background="@drawable/buttoninfo"
+            android:layout_margin="20dp"
+            android:padding="5dp"
+            android:onClick="onButtonUploadClick"/>
+        <Button
+            android:id="@+id/showImage"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Show image"
+            android:background="@drawable/buttoninfo"
+            android:layout_margin="20dp"
+            android:padding="5dp"
+            android:onClick="onButtonShowClick"/>
+
+    </LinearLayout>
+
+</LinearLayout>
