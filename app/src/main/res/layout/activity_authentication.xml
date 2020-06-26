@@ -7,18 +7,6 @@
     tools:context=".Authentication">
 
 
-    <Button
-        android:id="@+id/event_finish_id_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/buttoninfo"
-        android:text="@string/strNext"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:onClick="signOut"/>
+
 
 </RelativeLayout>

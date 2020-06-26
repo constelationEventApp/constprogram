@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,9 +30,14 @@ import java.util.List;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
-    FirebaseUser user;
-    TextView tvFirstname, tvLastname, tvEmail, tvTitle, tvCompany;
-    ImageView imageProfile;
+   private FirebaseUser user;
+   private TextView tvFirstname, tvLastname, tvEmail, tvTitle, tvCompany;
+   private RadioGroup rgGender;
+   private ImageView imageProfile;
+   private  UserInfoModel userInfoModel;
+
+    private String uFirstname, uLastname, uEmail, uTitle, uCompany, uGender, uImage;
+
 
 
     @Override
@@ -44,9 +51,31 @@ public class CreateAccountActivity extends AppCompatActivity {
         tvTitle = (TextView) findViewById(R.id.txt_title_id_create_account);
         tvCompany = (TextView) findViewById(R.id.txt_company_id_create_account);
         imageProfile=(ImageView) findViewById(R.id.imageProfile);
+        rgGender=(RadioGroup) findViewById(R.id.rg_sex_id_create_account);
+        userInfoModel=new UserInfoModel();
+
+        rgGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId){
+                    case R.id.rb_homme_id_create_account:
+                        // do operations specific to this selection
+                        uGender="M";
+                        break;
+                    case R.id.rb_femme_id_create_account:
+                        // do operations specific to this selection
+                        uGender="F";
+                        break;
+                    default:
+                }
+            }
+        });
 
 
+        getInfoFromSignIn();
+    }
 
+    private void getInfoFromSignIn() {
         user = FirebaseAuth.getInstance().getCurrentUser();
         List<? extends UserInfo> infos = user.getProviderData();
         for (UserInfo ui : infos) {
@@ -58,6 +87,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     Picasso.get().load(user.getPhotoUrl())
                             .placeholder(R.drawable.image_holder)
                             .fit().centerCrop().into(imageProfile);
+                    uImage=user.getPhotoUrl().toString();
                     Toast.makeText(CreateAccountActivity.this, "userProvider: "+ user.getDisplayName(), Toast.LENGTH_LONG).show();
                     break;
 
@@ -73,6 +103,33 @@ public class CreateAccountActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void onClickFinishCreateAccount(View view){
+        //uFirstname, uLastname, uEmail, uTitle, uCompany, uGender, uImage;
+
+
+        uFirstname=tvFirstname.getText().toString();
+        uLastname=tvLastname.getText().toString();
+        uEmail=tvEmail.getText().toString();
+        uTitle=tvTitle.getText().toString();
+        uCompany=tvCompany.getText().toString();
+
+        userInfoModel.setuFirstname(tvFirstname.getText().toString());
+        userInfoModel.setuLastname(tvLastname.getText().toString());
+        userInfoModel.setuEmail(tvEmail.getText().toString());
+        userInfoModel.setuTitle(tvTitle.getText().toString());
+        userInfoModel.setuCompany(tvCompany.getText().toString());
+        userInfoModel.setuGender(uGender);
+        userInfoModel.setuImage(uImage);
+
+        userInfoModel.insertUser(userInfoModel);
+        startActivity(new Intent(getApplicationContext(), WaitingActivity.class));
+        finish();
+
+
+    }
+
+
     @Override
     public void onBackPressed() {
         cancelmessage();

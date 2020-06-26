@@ -24,7 +24,7 @@ import java.util.List;
 
 public class EventInformationSecondActivity extends AppCompatActivity {
     Bundle extras;
-    String fullname, email, imageUrl, userId, phoneNumber, userProvider;
+    String tvFirstname, tvLastname, tvEmail,tvTitle, tvCompany, imageUrl, userId, phoneNumber, userProvider;
     FirebaseUser user;
 
     @Override
@@ -55,26 +55,7 @@ public class EventInformationSecondActivity extends AppCompatActivity {
             }
         }
 
-        if (extras != null) {
-            /*switch (extras.getString("userProvider")){
-                case "Google":
-                    break;
-                case "Facebook":
-                    break;
-                case "Email":
-                    break;
-                default:
-            }*/
-            fullname=extras.getString("fullname");
-            email= extras.getString("email");
-            phoneNumber=extras.getString("phoneNumber");
-            imageUrl= extras.getString("imageUrl");
-            userId= extras.getString("userId");
-            userProvider= extras.getString("userProvider :");
 
-
-            //The key argument here must match that used in the other activity
-        }
     }
     @Override
     public void onBackPressed() {

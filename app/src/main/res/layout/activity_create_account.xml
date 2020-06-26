@@ -139,7 +139,7 @@
             android:fontFamily="monospace"
             android:text="@string/strContinue"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:onClick="signOut"
             android:layout_marginRight="30dp"/>
 
@@ -151,8 +151,8 @@
             android:fontFamily="monospace"
             android:text="Finish account"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:onClick="finishCreateAccountProcess"
+            android:textSize="14sp"
+            android:onClick="onClickFinishCreateAccount"
             />
 
     </LinearLayout>

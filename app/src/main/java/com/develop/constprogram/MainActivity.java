@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
-Button btn, btnListDashboard;
+Button btn, btnListDashboard, pickImage;
 
 
     @Override
@@ -19,6 +19,7 @@ Button btn, btnListDashboard;
         setContentView(R.layout.activity_main);
 
         btn=findViewById(R.id.toListProgram);
+        pickImage=findViewById(R.id.picKImage);
         btnListDashboard=findViewById(R.id.btnListDashboard);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +34,15 @@ Button btn, btnListDashboard;
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,Authentication.class);
+                startActivity(intent);
+            }
+        });
+
+
+        pickImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,ImageToUploadAndDisplay.class);
                 startActivity(intent);
             }
         });
