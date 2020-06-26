@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">constprogram</string>
 
-    <string name="facebook_app_id">938335779936885</string>
-    <string name="fb_login_protocol_scheme">fb938335779936885</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="strAppName">Haitian Event</string>
@@ -38,6 +37,7 @@
     <string name="strConfirmPassword">Confirm password</string>
     <string name="strFirstName">First name</string>
     <string name="strLastName">Last name</string>
+
     <string name="strTitle">Title</string>
     <string name="strSignUp">Sign up</string>
     <string name="strDateProgramList"></string>
@@ -51,6 +51,10 @@
     <string name="strGender">Gender</string>
     <string name="strMale">Male</string>
     <string name="strFemale">Female</string>
+
+
+    <string name="facebook_application_id" translatable="false">2349772061993406</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb2349772061993406</string>
 
 
 </resources>

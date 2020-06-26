@@ -1,5 +1,6 @@
 package com.develop.constprogram;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
@@ -13,6 +14,10 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import java.util.Calendar;
 
@@ -130,6 +135,19 @@ public class EventInformationFirstActivity extends AppCompatActivity implements 
             Intent intent = new Intent(EventInformationFirstActivity.this, WelcomeActivity.class);
             startActivity(intent);
             finish();
+        }
+
+        public void signOut(View view){
+            AuthUI.getInstance()
+                    .signOut(this)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            startActivity(new Intent(getApplicationContext(),Authentication.class));
+                            finish();
+                        }
+                    });
         }
     }
 

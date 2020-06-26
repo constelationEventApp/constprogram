@@ -67,6 +67,15 @@
         android:textColor="@color/white"
         android:textSize="22sp" />
 
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="click"
+        android:visibility="gone"
+        />
+
     <Button
         android:id="@+id/btn_ctn_facebook_sign_up"
         android:layout_width="match_parent"
@@ -79,7 +88,8 @@
         android:paddingEnd="5dp"
         android:text="@string/strCtnFacebook"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:onClick="onClick"/>
 
     <Button
         android:id="@+id/btn_ctn_google_sign_up"
@@ -93,4 +103,7 @@
         android:text="@string/strCtnGoogle"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="18sp" />
+
+
+
 </LinearLayout>

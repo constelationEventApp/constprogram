@@ -14,7 +14,7 @@
     <EditText
         android:id="@+id/txt_lname_id_create_account"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/eventinfoinput"
         android:ems="10"
@@ -27,7 +27,7 @@
     <EditText
         android:id="@+id/txt_fname_id_create_account"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/eventinfoinput"
         android:ems="10"
@@ -38,9 +38,22 @@
         android:paddingEnd="15dp" />
 
     <EditText
+        android:id="@+id/txt_email_id_create_account"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/eventinfoinput"
+        android:ems="10"
+        android:fontFamily="monospace"
+        android:hint="@string/strEmail"
+        android:inputType="textEmailAddress"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"/>
+
+    <EditText
         android:id="@+id/txt_title_id_create_account"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/eventinfoinput"
         android:ems="10"
@@ -53,7 +66,7 @@
     <EditText
         android:id="@+id/txt_company_id_create_account"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/eventinfoinput"
         android:ems="10"
@@ -66,31 +79,46 @@
     <TextView
         android:id="@+id/tv_sex_id_create_account"
         android:layout_width="match_parent"
-        android:layout_height="34dp"
+        android:layout_height="30dp"
         android:background="@drawable/com_facebook_auth_dialog_header_background"
         android:paddingStart="15dp"
         android:text="@string/strGender"
         android:textSize="18sp" />
 
-    <RadioGroup
-        android:id="@+id/rg_sex_id_create_account"
-        android:layout_width="match_parent"
-        android:layout_height="89dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioGroup
+            android:id="@+id/rg_sex_id_create_account"
+            android:layout_width="wrap_content"
+            android:layout_height="89dp"
+            android:layout_marginRight="120dp">
 
-        <RadioButton
-            android:id="@+id/rb_homme_id_create_account"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/strMale"
-            android:textSize="18sp" />
+            <RadioButton
+                android:id="@+id/rb_homme_id_create_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/strMale"
+                android:textSize="18sp" />
 
-        <RadioButton
-            android:id="@+id/rb_femme_id_create_account"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/strFemale"
-            android:textSize="18sp" />
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/rb_femme_id_create_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/strFemale"
+                android:textSize="18sp" />
+        </RadioGroup>
+        <ImageView
+            android:id="@+id/imageProfile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+
+    </LinearLayout>
+
+
 
     <CheckBox
         android:id="@+id/cb_accept_term_id_create_account"
@@ -100,13 +128,37 @@
         android:text="@string/strTerm"
         android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/button4"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/buttoninfo"
-        android:fontFamily="monospace"
-        android:text="@string/strContinue"
-        android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttoninfo"
+            android:fontFamily="monospace"
+            android:text="@string/strContinue"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:onClick="signOut"
+            android:layout_marginRight="30dp"/>
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttoninfo"
+            android:fontFamily="monospace"
+            android:text="Finish account"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:onClick="finishCreateAccountProcess"
+            />
+
+    </LinearLayout>
+
+
+
+
+
 </LinearLayout>

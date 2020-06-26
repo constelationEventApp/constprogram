@@ -14,4 +14,12 @@
     <color name="black">#000000</color>
     <color name="red_transparent">#AAF61459</color>
     <color name="bleu_fonce_transparent">#88021C41</color>
+
+    //Color for firebase login custom theme
+    <color name="material_blue_50"> #ffffff</color>
+    <color name="material_blue_500">#0761df</color>
+    <color name="material_blue_700"> #0656c6</color>
+    <color name="material_blue_a200">  #ffffff</color>
+    <color name="material_lime_a700">#04367c</color>
+    <color name="material_purple_a700"> #F61459</color>
 </resources>

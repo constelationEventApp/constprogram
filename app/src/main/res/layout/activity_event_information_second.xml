@@ -29,7 +29,7 @@
     <TextView
         android:id="@+id/id_image_event_info"
         android:layout_width="match_parent"
-        android:layout_height="228dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
@@ -38,7 +38,7 @@
         android:background="@drawable/eventinfoinput"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:paddingBottom="10dp"
+        android:paddingBottom="2dp"
         android:text="@string/strImageEvent" />
 
     <Button
@@ -52,6 +52,9 @@
         android:background="@drawable/buttoninfo"
         android:text="@string/strNext"
         android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:onClick="signOut"
+
+        />
 
 </LinearLayout>
