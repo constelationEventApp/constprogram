@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WaitingActivity"></activity>
+        <activity android:name=".FavoriteProgramActivity"></activity>
+        <activity android:name=".FragmentUsageActivity" />
+        <activity android:name=".WaitingActivity" />
         <activity android:name=".ImageToUploadAndDisplay" />
         <activity android:name=".Authentication" />
-        <activity android:name=".Autentication" />
         <activity android:name=".Profile" />
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".EventInformationSecondActivity" />
