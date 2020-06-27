@@ -19,7 +19,7 @@
     <Button
         android:id="@+id/secondFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:text="Second Fragment"
         android:textColor="@color/white"
@@ -32,10 +32,10 @@
         android:layout_marginTop="10dp" >
 
         <fragment
-            android:id="@+id/fragment2"
-            android:name="com.develop.constprogram.SegondFragment"
+            android:id="@+id/fragment"
+            android:name="com.develop.constprogram.EventInformationFirstFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout="@layout/fragment_segond" />
+            tools:layout="@layout/fragment_event_information_first" />
     </FrameLayout>
 </LinearLayout>
