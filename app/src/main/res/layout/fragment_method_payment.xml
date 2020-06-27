@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.DashboardFragment">
+    tools:context=".ui.MethodPaymentFragment">
 
     <TextView
         android:id="@+id/textView5"
@@ -13,6 +13,7 @@
         android:background="@drawable/button"
         android:fontFamily="monospace"
         android:gravity="center"
-        android:text="Page d'accueil"
+        android:text="Method of Payment"
         android:textColor="@color/white" />
+
 </FrameLayout>

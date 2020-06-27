@@ -9,15 +9,13 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/id_tab_layout"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
-        app:layout_constraintBottom_toTopOf="@+id/id_viewpager_tab"
+        android:background="@color/colorPrimaryDark"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/colorPrimaryDark"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/id_dashboard_tab"
@@ -40,11 +38,13 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/id_viewpager_tab"
-        android:layout_width="match_parent"
-        android:layout_height="508dp"
+        android:layout_width="0dp"
+        android:layout_height="551dp"
         android:layout_gravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_tab_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/id_tab_layout"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
