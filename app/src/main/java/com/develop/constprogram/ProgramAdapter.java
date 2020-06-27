@@ -47,7 +47,8 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
                 holder.btnFavorite.setImageResource(R.drawable.favorite);
                 break;
             case "Favorite":
-                holder.btnFavorite.setImageResource(R.drawable.delete_program_from_favorite);
+            case "MyProgram":
+               holder.btnFavorite.setImageResource(R.drawable.delete_program_from_favorite);
                 break;
             default:
 
@@ -89,7 +90,9 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
     public ProgramHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
         switch (activityName){
-            case "Recycle": case "Favorite":
+            case "Recycle":
+            case "Favorite":
+            case "MyProgram":
                  v= LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list_program,parent,false);
 
                 break;
@@ -121,7 +124,7 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
             context = itemView.getContext();
 
             switch (activityName){
-                case "Recycle":  case "Favorite":
+                case "Recycle":  case "Favorite": case "MyProgram":
                     programTitle=itemView.findViewById(R.id.txtNameProgramList);
                     programDate=itemView.findViewById(R.id.txtDateProgramList);
                     programAddress=itemView.findViewById(R.id.txtAdressProgramList);

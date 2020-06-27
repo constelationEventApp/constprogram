@@ -57,10 +57,6 @@ public class Recycle extends AppCompatActivity {
             public void onItemLongClick(int position, View v) {
             }
         });
-
-
-
-
     }
 
     @Override

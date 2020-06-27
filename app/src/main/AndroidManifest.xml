@@ -15,7 +15,6 @@
         <activity android:name=".FragmentUsageActivity" />
         <activity android:name=".WaitingActivity" />
         <activity android:name=".NavDrawerActivity" android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".WaitingActivity" />
         <activity android:name=".ImageToUploadAndDisplay" />
         <activity android:name=".Authentication" />
         <activity android:name=".Profile" />
