@@ -6,8 +6,13 @@
     tools:context=".ui.home.DashboardFragment">
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="110dp"
-        android:layout_height="117dp"
-        android:text="@string/strnavDashboard" />
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:text="Page d'accueil"
+        android:textColor="@color/white" />
 </FrameLayout>

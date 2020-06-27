@@ -83,6 +83,7 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
                 mFragmentTransaction = mFragmentManager.beginTransaction();
                 mFragmentTransaction.replace(R.id.container_fragment, new AccountFragment());
                 mFragmentTransaction.commit();
+                break;
 
             }
             case R.id.nav_follow : {
@@ -90,45 +91,52 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
                 mFragmentTransaction = mFragmentManager.beginTransaction();
                 mFragmentTransaction.replace(R.id.container_fragment, new WhoToFollowFragment());
                 mFragmentTransaction.commit();
+                break;
             }
             case R.id.nav_about_us : {
                 mFragmentManager = getSupportFragmentManager();
                 mFragmentTransaction = mFragmentManager.beginTransaction();
                 mFragmentTransaction.replace(R.id.container_fragment, new AboutUsFragment());
                 mFragmentTransaction.commit();
+                break;
             }
             case R.id.nav_help_comment : {
                 mFragmentManager = getSupportFragmentManager();
                 mFragmentTransaction = mFragmentManager.beginTransaction();
                 mFragmentTransaction.replace(R.id.container_fragment, new HelpCommentFragment());
                 mFragmentTransaction.commit();
+                break;
             }
             case R.id.nav_history : {
                 mFragmentManager = getSupportFragmentManager();
                 mFragmentTransaction = mFragmentManager.beginTransaction();
                 mFragmentTransaction.replace(R.id.container_fragment, new HistoryFragment());
                 mFragmentTransaction.commit();
+                break;
             }
             case R.id.nav_quit : {
-
+                break;
             }
             case R.id.nav_modepaiment : {
                 mFragmentManager = getSupportFragmentManager();
                 mFragmentTransaction = mFragmentManager.beginTransaction();
                 mFragmentTransaction.replace(R.id.container_fragment, new MethodPaymentFragment());
                 mFragmentTransaction.commit();
+                break;
             }
             case R.id.nav_subscription : {
                 mFragmentManager = getSupportFragmentManager();
                 mFragmentTransaction = mFragmentManager.beginTransaction();
                 mFragmentTransaction.replace(R.id.container_fragment, new SubscriptionFragment());
                 mFragmentTransaction.commit();
+                break;
             }
             case R.id.nav_setting : {
                 mFragmentManager = getSupportFragmentManager();
                 mFragmentTransaction = mFragmentManager.beginTransaction();
                 mFragmentTransaction.replace(R.id.container_fragment, new SettingFragment());
                 mFragmentTransaction.commit();
+                break;
             }
         }
 
