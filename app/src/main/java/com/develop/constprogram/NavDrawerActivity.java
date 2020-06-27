@@ -13,6 +13,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.develop.constprogram.ui.AboutUsFragment;
+import com.develop.constprogram.ui.AccountFragment;
+import com.develop.constprogram.ui.FavoriteFragment;
+import com.develop.constprogram.ui.HelpCommentFragment;
+import com.develop.constprogram.ui.HistoryFragment;
+import com.develop.constprogram.ui.MethodPaymentFragment;
+import com.develop.constprogram.ui.WhoToFollowFragment;
+import com.develop.constprogram.ui.settings.SettingFragment;
+import com.develop.constprogram.ui.subscription.SubscriptionFragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class NavDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, MainFragment.onFragmentBtnSelected {
@@ -52,7 +61,7 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         mDrawerLayout.closeDrawer(GravityCompat.START);
-        if(menuItem.getItemId() == R.id.home){
+        if(menuItem.getItemId() == R.id.nav_home){
             // load home fragment
 
             mFragmentManager = getSupportFragmentManager();
@@ -61,12 +70,66 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
             mFragmentTransaction.commit();
         }
 
-        if(menuItem.getItemId() == R.id.dashboard){
+        if(menuItem.getItemId() == R.id.nav_favorite){
             // load dashboard fragment
             mFragmentManager = getSupportFragmentManager();
             mFragmentTransaction = mFragmentManager.beginTransaction();
-            mFragmentTransaction.replace(R.id.container_fragment, new SecondFragment());
+            mFragmentTransaction.replace(R.id.container_fragment, new FavoriteFragment());
             mFragmentTransaction.commit();
+        }
+        switch (menuItem.getItemId()){
+            case R.id.nav_compte : {
+                mFragmentManager = getSupportFragmentManager();
+                mFragmentTransaction = mFragmentManager.beginTransaction();
+                mFragmentTransaction.replace(R.id.container_fragment, new AccountFragment());
+                mFragmentTransaction.commit();
+
+            }
+            case R.id.nav_follow : {
+                mFragmentManager = getSupportFragmentManager();
+                mFragmentTransaction = mFragmentManager.beginTransaction();
+                mFragmentTransaction.replace(R.id.container_fragment, new WhoToFollowFragment());
+                mFragmentTransaction.commit();
+            }
+            case R.id.nav_about_us : {
+                mFragmentManager = getSupportFragmentManager();
+                mFragmentTransaction = mFragmentManager.beginTransaction();
+                mFragmentTransaction.replace(R.id.container_fragment, new AboutUsFragment());
+                mFragmentTransaction.commit();
+            }
+            case R.id.nav_help_comment : {
+                mFragmentManager = getSupportFragmentManager();
+                mFragmentTransaction = mFragmentManager.beginTransaction();
+                mFragmentTransaction.replace(R.id.container_fragment, new HelpCommentFragment());
+                mFragmentTransaction.commit();
+            }
+            case R.id.nav_history : {
+                mFragmentManager = getSupportFragmentManager();
+                mFragmentTransaction = mFragmentManager.beginTransaction();
+                mFragmentTransaction.replace(R.id.container_fragment, new HistoryFragment());
+                mFragmentTransaction.commit();
+            }
+            case R.id.nav_quit : {
+
+            }
+            case R.id.nav_modepaiment : {
+                mFragmentManager = getSupportFragmentManager();
+                mFragmentTransaction = mFragmentManager.beginTransaction();
+                mFragmentTransaction.replace(R.id.container_fragment, new MethodPaymentFragment());
+                mFragmentTransaction.commit();
+            }
+            case R.id.nav_subscription : {
+                mFragmentManager = getSupportFragmentManager();
+                mFragmentTransaction = mFragmentManager.beginTransaction();
+                mFragmentTransaction.replace(R.id.container_fragment, new SubscriptionFragment());
+                mFragmentTransaction.commit();
+            }
+            case R.id.nav_setting : {
+                mFragmentManager = getSupportFragmentManager();
+                mFragmentTransaction = mFragmentManager.beginTransaction();
+                mFragmentTransaction.replace(R.id.container_fragment, new SettingFragment());
+                mFragmentTransaction.commit();
+            }
         }
 
         return true;

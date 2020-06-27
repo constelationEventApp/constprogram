@@ -4,24 +4,51 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/home"
+            android:id="@+id/nav_home"
             android:title="@string/strNavHome" />
         <item
-            android:id="@+id/dashboard"
-            android:title="@string/strNavDashboard" />
+            android:id="@+id/nav_favorite"
+            android:title="Favorite" />
         <item
-            android:id="@+id/nav_yes"
-            android:title="Yes" />
-        <item android:title="Commnity">
+            android:id="@+id/nav_follow"
+            android:title="Who to follow?" />
+        <item
+            android:id="@+id/nav_subscription"
+            android:title="Subscription" />
+        <item
+            android:id="@+id/nav_history"
+            android:title="History" />
+
+
+        <item android:title="Configuration">
             <menu>
-                <item
-                    android:id="@+id/nav_share"
-                    android:title="Share" />
-                <item
-                    android:id="@+id/nav_send"
-                    android:title="Send" />
+            <item
+                android:id="@+id/nav_compte"
+                android:title="Account" />
+            <item
+                android:id="@+id/nav_modepaiment"
+                android:title="Method of payment" />
+            <item
+                android:id="@+id/nav_setting"
+                android:title="Settings"
+                />
             </menu>
         </item>
+
+        <item android:title="WichEvent information">
+            <menu>
+                <item
+                    android:id="@+id/nav_help_comment"
+                    android:title="Help and Comments" />
+                <item
+                    android:id="@+id/nav_about_us"
+                    android:title="About WichEvent" />
+                <item
+                    android:id="@+id/nav_quit"
+                    android:title="Quit" />
+            </menu>
+        </item>
+
     </group>
 
 
