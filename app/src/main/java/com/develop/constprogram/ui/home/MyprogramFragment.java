@@ -1,4 +1,4 @@
-package com.develop.constprogram;
+package com.develop.constprogram.ui.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.develop.constprogram.ProgramAdapter;
+import com.develop.constprogram.ProgramModel;
+import com.develop.constprogram.R;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;

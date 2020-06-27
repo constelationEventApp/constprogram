@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateProgramActivity"></activity>
+        <activity android:name=".ui.AboutUsActivity"></activity>
+        <activity android:name=".ui.HelpAndCommentsActivity" />
+        <activity android:name=".ui.settings.SettingsActivity" />
+        <activity android:name=".ui.ModePaimentActivity" />
+        <activity android:name=".ui.CompteActivity" />
+        <activity android:name=".CreateProgramActivity" />
         <activity android:name=".FavoriteProgramActivity" />
         <activity android:name=".FragmentUsageActivity" />
         <activity android:name=".WaitingActivity" />
