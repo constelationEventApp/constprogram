@@ -24,7 +24,7 @@ Button btn, btnListDashboard, pickImage;
             @Override
             public void onClick(View v) {
               //  Intent intent=new Intent(MainActivity.this,FragmentUsageActivity.class);
-                Intent intent=new Intent(MainActivity.this,CreateProgramActivity.class);
+                Intent intent=new Intent(MainActivity.this,EventInformationFirstActivity.class);
                 startActivity(intent);
             }
         });

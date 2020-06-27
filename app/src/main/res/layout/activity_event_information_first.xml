@@ -148,7 +148,7 @@
         android:text="@string/strNext"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:onClick="signOut"/>
+        android:onClick="onClickNext"/>
 
 
 </LinearLayout>

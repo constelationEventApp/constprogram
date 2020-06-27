@@ -32,14 +32,6 @@ public class EventInformationFirstFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_event_information_first, container, false);
-
-
-        initializeValue(view);
-
-        return view;
-    }
-
-    private void initializeValue(View view) {
         mDisplayStartDate = (TextView) view.findViewById(R.id.start_date_id_info);
         mDisplayEndDate = (TextView) view.findViewById(R.id.end_date_id_info);
         mDisplayStartTime = (TextView) view.findViewById(R.id.start_time_id_info);
@@ -52,18 +44,6 @@ public class EventInformationFirstFragment extends Fragment {
                 DialogFragment timepicker = new TimePickerFragment();
                 timepicker.show(getActivity().getSupportFragmentManager(),"time picker");
                 temoinTime = true;
-                Calendar cal =Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-
-
-                DatePickerDialog dialog = new DatePickerDialog(
-                        getActivity(), android.R.style.Theme_Holo_Light_Dialog_MinWidth,mDateSetListener,
-                        year, month, day );
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
-//        Toast.makeText(this, aff, Toast.LENGTH_LONG).show();
             }
         });
         mDisplayEndTime.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +53,6 @@ public class EventInformationFirstFragment extends Fragment {
                 DialogFragment timepicker = new TimePickerFragment();
                 timepicker.show(getActivity().getSupportFragmentManager(),"time picker");
                 temoinTime = false;
-
             }
         });
 
@@ -95,14 +74,14 @@ public class EventInformationFirstFragment extends Fragment {
             }
         };
 
+        return view;
     }
 
-    public void onClickDate(View view){
+    public void onClickDate(){
         Calendar cal =Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
-
 
         DatePickerDialog dialog = new DatePickerDialog(
                 getContext(), android.R.style.Theme_Holo_Light_Dialog_MinWidth,mDateSetListener,

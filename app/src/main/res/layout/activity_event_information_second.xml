@@ -26,10 +26,14 @@
         android:paddingRight="20dp"
         android:paddingBottom="10dp" />
 
+
+
+
+
     <TextView
         android:id="@+id/id_image_event_info"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
@@ -40,6 +44,12 @@
         android:paddingRight="20dp"
         android:paddingBottom="2dp"
         android:text="@string/strImageEvent" />
+    <ImageButton
+        android:id="@+id/placeImage"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@drawable/image_holder"
+        android:onClick="onButtonChooseClick"/>
 
     <Button
         android:id="@+id/event_finish_id_info"
@@ -50,10 +60,10 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/buttoninfo"
-        android:text="@string/strNext"
+        android:text="Finish"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:onClick="signOut"
+        android:onClick="onButtonUploadClick"
 
         />
 

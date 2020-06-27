@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.auth.User;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -21,6 +22,7 @@ public class UserInfoModel {
     private StorageReference mStorageRef;
     CollectionReference mFireStore;
     private Context context;
+    private ProgramModel programModel;
 
 
 
@@ -63,6 +65,18 @@ public class UserInfoModel {
     }
 
 
+    //Method
+    public void insertUserProgram(String programId,String userId){
+        DocumentReference userDocument=mFireStore.document(userId);
+        UserProgramModel userProgramModel=new UserProgramModel();
+        userProgramModel.setProgramIdentifiant(programId);
+        CollectionReference myProgram=userDocument.collection("myprogram");
+        myProgram.add(userProgramModel);
+
+
+
+
+    }
 
     //Getters and Setters
 

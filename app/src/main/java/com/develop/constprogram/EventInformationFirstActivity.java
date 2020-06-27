@@ -12,6 +12,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -30,6 +31,13 @@ public class EventInformationFirstActivity extends AppCompatActivity implements 
         private boolean temoinDate;
         private boolean temoinTime;
 
+        private EditText mEventTitle;
+        private EditText mtTypeOfEvent;
+        private EditText mOrganizer;
+        String address="Haiti";
+
+
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -39,6 +47,10 @@ public class EventInformationFirstActivity extends AppCompatActivity implements 
             mDisplayEndDate = (TextView) findViewById(R.id.end_date_id_info);
             mDisplayStartTime = (TextView) findViewById(R.id.start_time_id_info);
             mDisplayEndTime = (TextView) findViewById(R.id.end_time_id_info);
+            mEventTitle = (EditText) findViewById(R.id.event_title_id_info);
+            mtTypeOfEvent = (EditText) findViewById(R.id.event_type_id_info);
+            mOrganizer = (EditText) findViewById(R.id.organizer_id_info);
+
 
             mDisplayStartTime.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -149,6 +161,30 @@ public class EventInformationFirstActivity extends AppCompatActivity implements 
                         }
                     });
         }
+
+        public void onClickNext(View view){
+            mDisplayStartDate = (TextView) findViewById(R.id.start_date_id_info);
+            mDisplayEndDate = (TextView) findViewById(R.id.end_date_id_info);
+            mDisplayStartTime = (TextView) findViewById(R.id.start_time_id_info);
+            mDisplayEndTime = (TextView) findViewById(R.id.end_time_id_info);
+            mEventTitle = (EditText) findViewById(R.id.event_title_id_info);
+            mtTypeOfEvent = (EditText) findViewById(R.id.event_type_id_info);
+            mOrganizer = (EditText) findViewById(R.id.organizer_id_info);
+
+            Intent intent = new Intent(EventInformationFirstActivity.this, EventInformationSecondActivity.class);
+            intent.putExtra("title", mEventTitle.getText().toString());
+            intent.putExtra("type", mtTypeOfEvent.getText().toString());
+            intent.putExtra("organizer", mOrganizer.getText().toString());
+            intent.putExtra("address", address);
+            intent.putExtra("startDate", mDisplayStartDate.getText().toString());
+            intent.putExtra("endDate", mDisplayEndDate.getText().toString());
+            intent.putExtra("startTime", mDisplayStartTime.getText().toString());
+            intent.putExtra("endTime", mDisplayEndTime.getText().toString());
+
+            startActivity(intent);
+
+        }
+
     }
 
 

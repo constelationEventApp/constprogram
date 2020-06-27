@@ -184,9 +184,9 @@ public class CreateAccountActivity extends AppCompatActivity {
         FirebaseUserMetadata metadata = user.getMetadata();
         if (metadata.getCreationTimestamp() == metadata.getLastSignInTimestamp()) {
             // The user is new,
-            startActivity(new Intent(getApplicationContext(),Dashboard.class));
+            startActivity(new Intent(getApplicationContext(),EventInformationFirstActivity.class));
         } else {
-            startActivity(new Intent(getApplicationContext(),Recycle.class));
+            startActivity(new Intent(getApplicationContext(),EventInformationFirstActivity.class));
             finish();
         }
     }

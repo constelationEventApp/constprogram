@@ -17,7 +17,7 @@ public class WaitingActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(),Dashboard.class));
+                startActivity(new Intent(getApplicationContext(),EventInformationFirstActivity.class));
                 finish();
             }
         },2000);
