@@ -75,6 +75,9 @@
     <string name="strDashboardTab">Dashboard</string>
     <string name="strListProgramTab">Program list</string>
     <string name="strMyProgramTab">My program</string>
+    <string name="strFollower">Followers</string>
+    <string name="strFollowings" />
+    <string name="strFollowing">Followings</string>
 
 
 </resources>
