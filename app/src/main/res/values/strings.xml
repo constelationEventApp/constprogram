@@ -79,6 +79,17 @@
     <string name="strFollower">Followers</string>
     <string name="strFollowings" />
     <string name="strFollowing">Followings</string>
+    <string name="strExit">Exit</string>
+    <string name="strFavorite">Favorite</string>
+    <string name="strWhotofollow">Who to follow?</string>
+    <string name="strSubscription">Subscription</string>
+    <string name="strHistory">History</string>
+    <string name="strConfiguration">Configuration</string>
+    <string name="strAccount">Account</string>
+    <string name="strMethodofpayment">Method of payment</string>
+    <string name="strSettings">Settings</string>
+    <string name="strHelpandComments">Help and Comments</string>
+    <string name="strAboutWichEvent">About WichEvent</string>
 
 
 </resources>

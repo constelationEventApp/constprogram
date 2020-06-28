@@ -5,33 +5,40 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
+            android:icon="@drawable/home_blue"
             android:title="@string/strNavHome" />
         <item
             android:id="@+id/nav_favorite"
-            android:title="Favorite" />
+            android:icon="@drawable/favorite_star_blue"
+            android:title="@string/strFavorite" />
         <item
             android:id="@+id/nav_follow"
-            android:title="Who to follow?" />
+            android:icon="@drawable/follow_blue"
+            android:title="@string/strWhotofollow" />
         <item
             android:id="@+id/nav_subscription"
-            android:title="Subscription" />
+            android:icon="@drawable/subscribe_blue"
+            android:title="@string/strSubscription" />
         <item
             android:id="@+id/nav_history"
-            android:title="History" />
+            android:icon="@drawable/history_blue"
+            android:title="@string/strHistory" />
 
 
-        <item android:title="Configuration">
+        <item android:title="@string/strConfiguration">
             <menu>
-            <item
-                android:id="@+id/nav_compte"
-                android:title="Account" />
-            <item
-                android:id="@+id/nav_modepaiment"
-                android:title="Method of payment" />
-            <item
-                android:id="@+id/nav_setting"
-                android:title="Settings"
-                />
+                <item
+                    android:id="@+id/nav_compte"
+                    android:icon="@drawable/account"
+                    android:title="@string/strAccount" />
+                <item
+                    android:id="@+id/nav_modepaiment"
+                    android:icon="@drawable/pay_blue"
+                    android:title="@string/strMethodofpayment" />
+                <item
+                    android:id="@+id/nav_setting"
+                    android:icon="@drawable/settings_blue"
+                    android:title="@string/strSettings" />
             </menu>
         </item>
 
@@ -39,13 +46,16 @@
             <menu>
                 <item
                     android:id="@+id/nav_help_comment"
-                    android:title="Help and Comments" />
+                    android:icon="@drawable/question"
+                    android:title="@string/strHelpandComments" />
                 <item
                     android:id="@+id/nav_about_us"
-                    android:title="About WichEvent" />
+                    android:icon="@drawable/about"
+                    android:title="@string/strAboutWichEvent" />
                 <item
                     android:id="@+id/nav_quit"
-                    android:title="Quit" />
+                    android:icon="@drawable/quit"
+                    android:title="@string/strExit" />
             </menu>
         </item>
 
