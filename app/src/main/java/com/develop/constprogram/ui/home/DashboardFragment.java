@@ -4,10 +4,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.develop.constprogram.Dashboard;
+import com.develop.constprogram.ProgramAdapter;
+import com.develop.constprogram.ProgramModel;
 import com.develop.constprogram.R;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,11 +66,60 @@ public class DashboardFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference programRef=db.collection("program");
+    private ProgramAdapter adapter;
+    private String activityName;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false);
+        View view=inflater.inflate(R.layout.fragment_dashboard, container, false);
+        activityName="Dashboard";
+        setUpRecyclerView(view, activityName);
+        return view;
+    }
+    private void setUpRecyclerView(View view , String activityName) {
+        Query query= programRef;
+        FirestoreRecyclerOptions<ProgramModel> options= new FirestoreRecyclerOptions.Builder<ProgramModel>()
+                .setQuery(query,ProgramModel.class)
+                .build();
+        adapter=new ProgramAdapter(options,activityName);
+
+        RecyclerView recyclerView = view.findViewById(R.id.programDashboard);
+        recyclerView.setHasFixedSize(true);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new ProgramAdapter.ClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+
+                TextView identifiant = (TextView) v.findViewById(R.id.identifiantProgramDashboard);
+
+
+              //  Toast.makeText(Dashboard.this, identifiant.getText(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onItemLongClick(int position, View v) {
+            }
+        });
+
+
+
+
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }

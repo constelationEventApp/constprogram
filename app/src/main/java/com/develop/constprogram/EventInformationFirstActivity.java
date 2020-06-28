@@ -19,6 +19,8 @@ import android.widget.TimePicker;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Calendar;
 
@@ -36,12 +38,17 @@ public class EventInformationFirstActivity extends AppCompatActivity implements 
         private EditText mOrganizer;
         String address="Haiti";
 
+        FirebaseUser user;
+
 
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_event_information_first);
+            //Instanciate user
+            user = FirebaseAuth.getInstance().getCurrentUser();
+
 
             mDisplayStartDate = (TextView) findViewById(R.id.start_date_id_info);
             mDisplayEndDate = (TextView) findViewById(R.id.end_date_id_info);
@@ -50,6 +57,9 @@ public class EventInformationFirstActivity extends AppCompatActivity implements 
             mEventTitle = (EditText) findViewById(R.id.event_title_id_info);
             mtTypeOfEvent = (EditText) findViewById(R.id.event_type_id_info);
             mOrganizer = (EditText) findViewById(R.id.organizer_id_info);
+
+            //Difault display organizer name
+            mOrganizer.setText(user.getDisplayName());
 
 
             mDisplayStartTime.setOnClickListener(new View.OnClickListener() {

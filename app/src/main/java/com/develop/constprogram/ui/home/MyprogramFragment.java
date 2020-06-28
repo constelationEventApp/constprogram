@@ -15,6 +15,8 @@ import com.develop.constprogram.ProgramAdapter;
 import com.develop.constprogram.ProgramModel;
 import com.develop.constprogram.R;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -70,6 +72,7 @@ public class MyprogramFragment extends Fragment {
     private CollectionReference programRef=db.collection("program");
     private ProgramAdapter adapter;
     private String fragementName;
+    FirebaseUser user;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,7 +87,11 @@ public class MyprogramFragment extends Fragment {
     }
 
     private void setUpRecyclerView(View view, String fragment) {
-        Query query= programRef;
+        //Query query= programRef;
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
+        Query query = programRef.whereEqualTo("userIdentity", user.getUid());
+
         FirestoreRecyclerOptions<ProgramModel> options= new FirestoreRecyclerOptions.Builder<ProgramModel>()
                 .setQuery(query,ProgramModel.class)
                 .build();

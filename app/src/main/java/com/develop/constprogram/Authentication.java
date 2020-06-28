@@ -67,7 +67,7 @@ public class Authentication extends AppCompatActivity {
 
                 if(user!=null){
 
-                        startActivity(new Intent(getApplicationContext(),CreateAccountActivity.class));
+                        startActivity(new Intent(getApplicationContext(),NavDrawerActivity.class));
                         finish();
 
                     // userProvider=firebaseAuth.getCurrentUser().getProviderData().get(0).toString();
@@ -120,11 +120,9 @@ public class Authentication extends AppCompatActivity {
                     }
                 }*/
 
-
                     Intent intent =new Intent(getApplicationContext(),CreateAccountActivity.class);
                     startActivity(intent);
                     finish();
-
 
             } else {
                 // Sign in failed

@@ -4,10 +4,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.develop.constprogram.OrganizerAdapter;
+import com.develop.constprogram.OrganizerModel;
+import com.develop.constprogram.ProgramAdapter;
+import com.develop.constprogram.ProgramModel;
 import com.develop.constprogram.R;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,10 +67,58 @@ public class WhoToFollowFragment extends Fragment {
         }
     }
 
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference programRef=db.collection("organizer");
+    private OrganizerAdapter adapter;
+    private String fragmentName;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_who_to_follow, container, false);
+        View view = inflater.inflate(R.layout.fragment_who_to_follow, container, false);
+        fragmentName="whoToFollow";
+        setUpRecyclerView(view,fragmentName);
+        return view;
+    }
+
+    private void setUpRecyclerView(View view, String fragment) {
+        Query query= programRef;
+        FirestoreRecyclerOptions<OrganizerModel> options= new FirestoreRecyclerOptions.Builder<OrganizerModel>()
+                .setQuery(query,OrganizerModel.class)
+                .build();
+        adapter=new OrganizerAdapter(options,fragment);
+
+        RecyclerView recyclerView = view.findViewById(R.id.id_organizer_list);
+        recyclerView.setHasFixedSize(true);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new OrganizerAdapter.ClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+
+                TextView identifiant = (TextView) v.findViewById(R.id.identifiantOrganizerList);
+
+
+                //  Toast.makeText(Recycle.this, identifiant.getText(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onItemLongClick(int position, View v) {
+            }
+        });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }

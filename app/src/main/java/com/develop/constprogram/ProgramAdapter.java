@@ -45,16 +45,28 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
         switch (activityName){
             case "Recycle": case "Dashboard":
                 holder.btnFavorite.setImageResource(R.drawable.favorite);
+
                 break;
             case "Favorite":
+              //  holder.btnFavorite.setImageResource(R.drawable.delete_program_from_favorite);
+                    break;
             case "MyProgram":
-               holder.btnFavorite.setImageResource(R.drawable.delete_program_from_favorite);
+                holder.btnDelete.setImageResource(R.drawable.delete_program_from_favorite);
+                holder.btnDelete.setBackground(null);
+                holder.btnUpdate.setVisibility(View.VISIBLE);
+                holder.btnUpdate.setBackground(null);
+                holder.btnUpdate.setImageResource(R.drawable.edit_program);
+
+
+
+
+
                 break;
             default:
 
         }
 
-        holder.btnFavorite.setBackground(null);
+
 
 
 
@@ -76,12 +88,20 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
 
             }
         });
-        holder.btnFavorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Favorite Button", Toast.LENGTH_LONG).show();
-            }
-        });
+
+        switch (activityName){
+            case "Recycle":
+            case "Dashboard":
+                holder.btnFavorite.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(), "Favorite Button", Toast.LENGTH_LONG).show();
+                    }
+                });
+                break;
+            default:
+        }
+
 
     }
 
@@ -92,8 +112,11 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
         switch (activityName){
             case "Recycle":
             case "Favorite":
-            case "MyProgram":
                  v= LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list_program,parent,false);
+
+                break;
+            case "MyProgram":
+                v= LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_my_program_list,parent,false);
 
                 break;
             case "Dashboard":
@@ -116,6 +139,8 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
         ImageView programImage;
         ImageButton btnShare;
         ImageButton btnFavorite;
+        ImageButton btnUpdate;
+        ImageButton btnDelete;
 
         public  ProgramHolder(View itemView){
             super(itemView);
@@ -124,7 +149,7 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
             context = itemView.getContext();
 
             switch (activityName){
-                case "Recycle":  case "Favorite": case "MyProgram":
+                case "Recycle":  case "Favorite":
                     programTitle=itemView.findViewById(R.id.txtNameProgramList);
                     programDate=itemView.findViewById(R.id.txtDateProgramList);
                     programAddress=itemView.findViewById(R.id.txtAdressProgramList);
@@ -133,6 +158,24 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
                     btnShare=itemView.findViewById(R.id.imbShareProgramList);
                     btnFavorite=itemView.findViewById(R.id.imbFavoriteProgramList);
                     break;
+
+                case "MyProgram":
+
+                    if(activityName=="MyProgram"){
+                        programTitle=itemView.findViewById(R.id.txtNameMyProgramList);
+                        programDate=itemView.findViewById(R.id.txtDateMyProgramList);
+                        programAddress=itemView.findViewById(R.id.txtAdressMyProgramList);
+                        programIdentity=itemView.findViewById(R.id.identifiantMyProgramList);
+                        programImage=itemView.findViewById(R.id.imMyProgramList);
+                        btnShare=itemView.findViewById(R.id.imbShareMyProgramList);
+                        btnUpdate=itemView.findViewById(R.id.imbUpdateMyProgramList);
+                        btnDelete=itemView.findViewById(R.id.imbDeleteMyProgramList);
+
+
+                    }
+
+                    break;
+
                 case "Dashboard":
                     programTitle=itemView.findViewById(R.id.txtNameProgramDashboard);
                     programDate=itemView.findViewById(R.id.txtDateProgramDashboard);

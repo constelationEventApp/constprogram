@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-   android:layout_margin="5dp"
+   android:layout_margin="3dp"
     android:background="@drawable/custom_program_list"
     android:descendantFocusability="blocksDescendants"
     android:outlineSpotShadowColor="@color/bleu_fonce_transparent"
@@ -65,12 +65,14 @@
                 android:padding="5dp"
                 android:background="#00000000"/>
 
+
             <ImageButton
                 android:id="@+id/imbFavoriteProgramList"
                 android:layout_width="@dimen/dimFaShProgramList"
                 android:layout_height="@dimen/dimFaShProgramList"
                 android:padding="5dp"
                 android:layout_marginLeft="@dimen/dimMarginLeftShareProgramList"/>
+
             <TextView
                 android:id="@+id/identifiantProgramList"
                 android:layout_width="30dp"

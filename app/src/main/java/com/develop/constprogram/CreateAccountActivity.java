@@ -151,9 +151,9 @@ public class CreateAccountActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                Intent intent = new Intent(CreateAccountActivity.this, SignUpActivity.class);
+               /* Intent intent = new Intent(CreateAccountActivity.this, SignUpActivity.class);
                 startActivity(intent);
-                finish();
+                finish();*/
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

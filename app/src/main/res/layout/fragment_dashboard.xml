@@ -5,14 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.DashboardFragment">
 
-    <TextView
-        android:id="@+id/textView5"
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/programDashboard"
         android:layout_width="match_parent"
-        android:layout_height="85dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/button"
-        android:fontFamily="monospace"
-        android:gravity="center"
-        android:text="Page d'accueil"
-        android:textColor="@color/white" />
+        android:layout_height="match_parent" />
 </FrameLayout>

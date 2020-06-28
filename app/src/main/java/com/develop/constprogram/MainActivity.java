@@ -2,6 +2,7 @@ package com.develop.constprogram;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,9 +15,20 @@ Button btn, btnListDashboard, pickImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        btn=findViewById(R.id.toListProgram);
+
+
+
+        Handler handler= new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(getApplicationContext(),Authentication.class));
+                finish();
+            }
+        },2000);
+
+      /*  btn=findViewById(R.id.toListProgram);
         pickImage=findViewById(R.id.picKImage);
         btnListDashboard=findViewById(R.id.btnListDashboard);
 
@@ -24,7 +36,7 @@ Button btn, btnListDashboard, pickImage;
             @Override
             public void onClick(View v) {
               //  Intent intent=new Intent(MainActivity.this,FragmentUsageActivity.class);
-                Intent intent=new Intent(MainActivity.this,EventInformationFirstActivity.class);
+                Intent intent=new Intent(MainActivity.this,Authentication.class);
                 startActivity(intent);
             }
         });
@@ -45,6 +57,6 @@ Button btn, btnListDashboard, pickImage;
                 startActivity(intent);
             }
         });
-
+*/
     }
 }

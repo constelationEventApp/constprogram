@@ -70,6 +70,9 @@ public class EventInformationSecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_information_second);
 
+        user =FirebaseAuth.getInstance().getCurrentUser();
+
+
         mImageField=findViewById(R.id.placeImage);
         mImageLink=findViewById(R.id.imageLink);
         mProgressBar=findViewById(R.id.uploadImageProgressBar);
@@ -214,7 +217,6 @@ public class EventInformationSecondActivity extends AppCompatActivity {
 
     public void insertEventInfo(){
 
-        user =FirebaseAuth.getInstance().getCurrentUser();
 
         Toast.makeText(this, "Inside Event Info", Toast.LENGTH_SHORT).show();
         programModel.setProgramName(extras.get("title").toString());
@@ -227,7 +229,7 @@ public class EventInformationSecondActivity extends AppCompatActivity {
         programModel.setProgramEndTime(extras.get("endTime").toString());
         programModel.setProgramSummary(mProgramSumary.getText().toString());
         programModel.setProgramImage(imageStoragePath);
-        //programModel.setProgramIdentity(user.getUid());
+        programModel.setUserIdentity(user.getUid());
 
         programModel.insertProgram(programModel, user.getUid());
 
