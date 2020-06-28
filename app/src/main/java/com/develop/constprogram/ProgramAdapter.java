@@ -34,7 +34,7 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ProgramHolder holder, int position, @NonNull ProgramModel model) {
+    protected void onBindViewHolder(@NonNull final ProgramHolder holder, int position, @NonNull final ProgramModel model) {
         holder.programTitle.setText(model.getProgramName());
         holder.programDate.setText(model.getProgramDate());
         holder.programAddress.setText(model.getProgramAddress());
@@ -48,8 +48,10 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
 
                 break;
             case "Favorite":
-              //  holder.btnFavorite.setImageResource(R.drawable.delete_program_from_favorite);
-                    break;
+                holder.btnDelete.setImageResource(R.drawable.delete_program_from_favorite);
+                holder.btnDelete.setBackground(null);
+
+                break;
             case "MyProgram":
                 holder.btnDelete.setImageResource(R.drawable.delete_program_from_favorite);
                 holder.btnDelete.setBackground(null);
@@ -95,7 +97,12 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
                 holder.btnFavorite.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getApplicationContext(), "Favorite Button", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Favorite Button"+model.getProgramIdentity(), Toast.LENGTH_LONG).show();
+
+                        ProgramModel programModel= new ProgramModel();
+                        programModel.addToFavorite(model.getProgramIdentity());
+
+
                     }
                 });
                 break;
@@ -111,8 +118,11 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
         View v;
         switch (activityName){
             case "Recycle":
-            case "Favorite":
                  v= LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list_program,parent,false);
+
+                break;
+            case "Favorite":
+                v= LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_favorite_list_program,parent,false);
 
                 break;
             case "MyProgram":
@@ -149,7 +159,7 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
             context = itemView.getContext();
 
             switch (activityName){
-                case "Recycle":  case "Favorite":
+                case "Recycle":
                     programTitle=itemView.findViewById(R.id.txtNameProgramList);
                     programDate=itemView.findViewById(R.id.txtDateProgramList);
                     programAddress=itemView.findViewById(R.id.txtAdressProgramList);
@@ -157,6 +167,16 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
                     programImage=itemView.findViewById(R.id.imProgramList);
                     btnShare=itemView.findViewById(R.id.imbShareProgramList);
                     btnFavorite=itemView.findViewById(R.id.imbFavoriteProgramList);
+                    break;
+                case "Favorite":
+                    programTitle=itemView.findViewById(R.id.txtNameFavoriteProgramList);
+                    programDate=itemView.findViewById(R.id.txtDateFavoriteProgramList);
+                    programAddress=itemView.findViewById(R.id.txtAdressFavoriteProgramList);
+                    programIdentity=itemView.findViewById(R.id.identifiantFavoriteProgramList);
+                    programImage=itemView.findViewById(R.id.imFavoriteProgramList);
+                    btnShare=itemView.findViewById(R.id.imbShareFavoriteProgramList);
+                    btnDelete=itemView.findViewById(R.id.imbDeleteFavoriteProgramList);
+
                     break;
 
                 case "MyProgram":

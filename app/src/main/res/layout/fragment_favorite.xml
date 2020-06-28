@@ -5,15 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.FavoriteFragment">
 
-    <TextView
-        android:id="@+id/textView5"
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/myFavoriteProgram"
         android:layout_width="match_parent"
-        android:layout_height="85dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/button"
-        android:fontFamily="monospace"
-        android:gravity="center"
-        android:text="Favorite program"
-        android:textColor="@color/white" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        />
 
 </FrameLayout>

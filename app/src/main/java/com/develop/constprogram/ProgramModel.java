@@ -1,5 +1,6 @@
 package com.develop.constprogram;
 
+import android.provider.DocumentsContract;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -8,11 +9,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
@@ -69,9 +73,92 @@ public class ProgramModel {
     //End of Constructors
 
 
+    public void addToFavorite(String programIdentity){
+        if(programIdentity!=null){
+            mFireStore.document(programIdentity)
+                    .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    ProgramModel programModel= documentSnapshot.toObject(ProgramModel.class);
+                    FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+                    insertProgramToFavorite(programModel,user.getUid());
+
+                }
+            });
+/*.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            Log.d(TAG, "Organiser Already inserted");
+                            mFireStore= FirebaseFirestore.getInstance().collection("program");
+
+
+                        } else {
+                            Log.d(TAG, "No such document");
+                        }
+                    }
+                }
+            });*/
+        }
+
+    }
+
+    public void insertProgramToFavorite(final ProgramModel programModel, final String userIdentity){
+        // mFireStore.document(programModel.programIdentity).set(programModel)
+        mFireStore= FirebaseFirestore.getInstance().collection("users");
+        CollectionReference collection=mFireStore.document(userIdentity).collection("favorite");
+
+        collection.whereEqualTo("programIdentity",programModel.programIdentity)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                if(document.getId()==programModel.getProgramIdentity()){
+
+                                    Log.d(TAG, "Already add to favorite!");
+
+                                }else{
+                                    Log.d(TAG, "No such document");
+                                    //No such document insert
+                                    mFireStore= FirebaseFirestore.getInstance().collection("users");
+                                    mFireStore.document(userIdentity).collection("favorite").document(programModel.programIdentity).set(programModel)
+                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    Log.d(TAG, "DocumentSnapshot successfully written!");
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.w(TAG, "Error adding document to Favorite", e);
+                                                }
+                                            });;
+                                    //end insert
+                                }
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+
+
+
+
+    }
     //Other Methode
     public void insertProgram(final ProgramModel programModel, final String userId){
        // mFireStore.document(programModel.programIdentity).set(programModel)
+
+
+
          mFireStore.add(programModel)
                  .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                      @Override
@@ -89,8 +176,6 @@ public class ProgramModel {
 
                          organizerModel.insertOrganizer(organizerModel,documentReference.getId());
 
-
-
                      }
                  })
                  .addOnFailureListener(new OnFailureListener() {
@@ -101,6 +186,8 @@ public class ProgramModel {
                  });
 
     }
+
+
 
     public void updateProgramIdentity(String programIdentity){
         mFireStore= FirebaseFirestore.getInstance().collection("program");
