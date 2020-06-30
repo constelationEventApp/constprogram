@@ -90,6 +90,28 @@
     <string name="strSettings">Settings</string>
     <string name="strHelpandComments">Help and Comments</string>
     <string name="strAboutWichEvent">About WichEvent</string>
+    <string name="strProbleme">Describe your issue</string>
+    <string name="strSendComment">Send comments</string>
+    <string name="strImportantArticle">Important Articles</string>
+    <string name="AllArticles">browse through all articles</string>
+    <string name="strTxtModePayment">Ajouter un mode de paiment pour effectuer vos prochains achats rapidement et en toute simplicite</string>
+    <string name="strAddModPayment">Add a method of payment</string>
+    <string name="strCreditCard">"        Add a credit or a debit
+        card"</string>
+    <string name="strOtherOption">Other Options</string>
+    <string name="strOtherSettingPayment">"       Other settings of
+        payment"</string>
+    <string name="strprivacysettings">"     Privacy settings"</string>
+    <string name="strLanguage">"     Language"</string>
+    <string name="strUserdatapolicy">"     User data policy"</string>
+    <string name="strCopyright">"     Copyright"</string>
+    <string name="strTermsofuse">"     Terms of use"</string>
+    <string name="strLogOut">Log out</string>
+    <string name="strChooseLanguage">Choose a language:</string>
+    <string name="stridEnglish">English</string>
+    <string name="strFrench">French</string>
+    <string name="strSpanish">Spanish</string>
+    <string name="strCreole">Creole</string>
 
 
 </resources>

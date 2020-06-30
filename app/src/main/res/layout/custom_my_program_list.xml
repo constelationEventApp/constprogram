@@ -43,6 +43,7 @@
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/bleu_fonce_transparent"
                 android:textSize="@dimen/dimNameProgramList"/>
+
             <TextView
                 android:id="@+id/txtAdressMyProgramList"
                 android:layout_width="265dp"

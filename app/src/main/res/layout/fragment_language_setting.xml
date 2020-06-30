@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/id_language_setting_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="40dp"
+    android:paddingTop="30dp"
+    android:paddingRight="40dp"
+    android:paddingBottom="50dp"
+    tools:context=".ui.settings.LanguageSettingFragment">
+
+
+    <TextView
+        android:id="@+id/id_choose_language_language_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:fontFamily="monospace"
+        android:text="@string/strChooseLanguage"
+        android:textColor="@color/red" />
+
+    <TextView
+        android:id="@+id/id_english_language_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="monospace"
+        android:text="@string/stridEnglish"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/id_french_language_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="monospace"
+        android:text="@string/strFrench"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/id_spanish_language_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="monospace"
+        android:text="@string/strSpanish"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/id_creole_language_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="monospace"
+        android:text="@string/strCreole"
+        android:textColor="@color/black" />
+</LinearLayout>
