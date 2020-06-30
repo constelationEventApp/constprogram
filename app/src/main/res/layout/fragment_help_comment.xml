@@ -1,19 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="20dp"
     tools:context=".ui.HelpCommentFragment">
 
-    <TextView
-        android:id="@+id/textView5"
+    <SearchView
         android:layout_width="match_parent"
-        android:layout_height="85dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        android:queryHint="@string/strProbleme">
+
+    </SearchView>
+
+    <TextView
+        android:id="@+id/important_article_id_help_and_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/strImportantArticle"
+        android:textColor="@color/bleu_fonce"
+        android:textSize="16sp" />
+
+    <ListView
+        android:id="@+id/id_listview_help_comment"
+        android:layout_width="match_parent"
+        android:layout_height="313dp" />
+
+    <TextView
+        android:id="@+id/id_toutes_articles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="@string/AllArticles"
+        android:textColor="@color/bleu_fonce"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/id_send_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/button"
         android:fontFamily="monospace"
-        android:gravity="center"
-        android:text="Help and Comments"
-        android:textColor="@color/white" />
+        android:text="@string/strSendComment"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
-</FrameLayout>
+</LinearLayout>

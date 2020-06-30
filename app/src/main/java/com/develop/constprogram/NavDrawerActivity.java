@@ -1,5 +1,7 @@
 package com.develop.constprogram;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -15,16 +17,25 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.develop.constprogram.ui.AboutUsFragment;
 import com.develop.constprogram.ui.AccountFragment;
+import com.develop.constprogram.ui.AddCreditCardPaymentFragment;
 import com.develop.constprogram.ui.FavoriteFragment;
 import com.develop.constprogram.ui.HelpCommentFragment;
 import com.develop.constprogram.ui.HistoryFragment;
 import com.develop.constprogram.ui.MethodPaymentFragment;
+import com.develop.constprogram.ui.OtherSettingPaymentFragment;
 import com.develop.constprogram.ui.WhoToFollowFragment;
+import com.develop.constprogram.ui.settings.CopyrightSettingFragment;
+import com.develop.constprogram.ui.settings.LanguageSettingFragment;
+import com.develop.constprogram.ui.settings.PrivacySettingFragment;
 import com.develop.constprogram.ui.settings.SettingFragment;
+import com.develop.constprogram.ui.settings.TermeUseSettingFragment;
+import com.develop.constprogram.ui.settings.UserDataPolicySettingFragment;
 import com.develop.constprogram.ui.subscription.SubscriptionFragment;
 import com.google.android.material.navigation.NavigationView;
 
-public class NavDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, MainFragment.onFragmentBtnSelected {
+public class NavDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+        MainFragment.onFragmentBtnSelected, SettingFragment.onButtonSettingFragmentSelected,
+        MethodPaymentFragment.onButtonPaymentFragmentSelected, HelpCommentFragment.onButtonHelpCommentFragmentSelected {
     DrawerLayout mDrawerLayout;
     ActionBarDrawerToggle mActionBarDrawerToggle;
     Toolbar mToolbar;
@@ -115,6 +126,7 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
                 break;
             }
             case R.id.nav_quit : {
+                message();
                 break;
             }
             case R.id.nav_modepaiment : {
@@ -142,9 +154,109 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
 
         return true;
     }
+    public  void message(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Exit");
+        // set message
+        builder.setMessage("Do you really want to exit WichEvent ?");
+        // set icon
+        builder.setIcon(R.drawable.quit);
+        // set cancelable
+        builder.setCancelable(true);
+        // set Yes and No button
+        builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+                System.exit(0);
+
+            }
+        });
+        builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        // create dialog
+        AlertDialog alertDialog = builder.create();
+        // show dialog
+        alertDialog.show();
+
+    }
+
 
     @Override
     public void onButtonSelected() {
         Toast.makeText(this,"Good", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void privacyButton() {
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        mFragmentTransaction.replace(R.id.container_fragment, new PrivacySettingFragment());
+        mFragmentTransaction.commit();
+    }
+
+    @Override
+    public void languageButton() {
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        mFragmentTransaction.replace(R.id.container_fragment, new LanguageSettingFragment());
+        mFragmentTransaction.commit();
+    }
+
+    @Override
+    public void termUseButton() {
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        mFragmentTransaction.replace(R.id.container_fragment, new TermeUseSettingFragment());
+        mFragmentTransaction.commit();
+    }
+
+    @Override
+    public void userDataPolicyButton() {
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        mFragmentTransaction.replace(R.id.container_fragment, new UserDataPolicySettingFragment());
+        mFragmentTransaction.commit();
+    }
+
+    @Override
+    public void copyrightButton() {
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        mFragmentTransaction.replace(R.id.container_fragment, new CopyrightSettingFragment());
+        mFragmentTransaction.commit();
+    }
+
+    @Override
+    public void addCardPaymentButton() {
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        mFragmentTransaction.replace(R.id.container_fragment, new AddCreditCardPaymentFragment());
+        mFragmentTransaction.commit();
+    }
+
+    @Override
+    public void otherSettingPaymentButton() {
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        mFragmentTransaction.replace(R.id.container_fragment, new OtherSettingPaymentFragment());
+        mFragmentTransaction.commit();
+    }
+
+    @Override
+    public void allArticleTv() {
+        Toast.makeText(this, "Good", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void sendCommentButton() {
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        mFragmentTransaction.replace(R.id.container_fragment, new SendCommentFragment());
+        mFragmentTransaction.commit();
     }
 }
