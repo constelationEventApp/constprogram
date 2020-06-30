@@ -107,6 +107,11 @@
     <string name="strCopyright">"     Copyright"</string>
     <string name="strTermsofuse">"     Terms of use"</string>
     <string name="strLogOut">Log out</string>
+    <string name="strChooseLanguage">Choose a language:</string>
+    <string name="stridEnglish">English</string>
+    <string name="strFrench">French</string>
+    <string name="strSpanish">Spanish</string>
+    <string name="strCreole">Creole</string>
 
 
 </resources>

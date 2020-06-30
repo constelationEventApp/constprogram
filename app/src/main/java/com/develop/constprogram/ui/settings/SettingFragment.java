@@ -19,6 +19,7 @@ public class SettingFragment extends Fragment {
     Button languageBtn;
     Button userDataPolicyBtn;
     Button copyrightBtn;
+    Button logOutBtn;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -62,6 +63,14 @@ public class SettingFragment extends Fragment {
             }
         });
 
+        logOutBtn = (Button) view.findViewById(R.id.id_log_out_setting);
+        logOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.logOutButton();
+            }
+        });
+
         userDataPolicyBtn = (Button) view.findViewById(R.id.id_setting_user_data_politic);
         userDataPolicyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,8 +79,8 @@ public class SettingFragment extends Fragment {
             }
         });
 
-        privacyBtn = (Button) view.findViewById(R.id.id_setting_copyright);
-        privacyBtn.setOnClickListener(new View.OnClickListener() {
+        copyrightBtn = (Button) view.findViewById(R.id.id_setting_copyright);
+        copyrightBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 listener.copyrightButton();
@@ -88,6 +97,7 @@ public class SettingFragment extends Fragment {
         public void termUseButton();
         public void userDataPolicyButton();
         public void copyrightButton();
+        public  void logOutButton();
 
 
     }

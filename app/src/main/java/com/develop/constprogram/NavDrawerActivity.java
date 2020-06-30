@@ -35,7 +35,8 @@ import com.google.android.material.navigation.NavigationView;
 
 public class NavDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         MainFragment.onFragmentBtnSelected, SettingFragment.onButtonSettingFragmentSelected,
-        MethodPaymentFragment.onButtonPaymentFragmentSelected, HelpCommentFragment.onButtonHelpCommentFragmentSelected {
+        MethodPaymentFragment.onButtonPaymentFragmentSelected, HelpCommentFragment.onButtonHelpCommentFragmentSelected,
+LanguageSettingFragment.onButtonLanguageSettingFragmentSelected {
     DrawerLayout mDrawerLayout;
     ActionBarDrawerToggle mActionBarDrawerToggle;
     Toolbar mToolbar;
@@ -328,6 +329,11 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
     }
 
     @Override
+    public void logOutButton() {
+
+    }
+
+    @Override
     public void addCardPaymentButton() {
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
@@ -354,6 +360,29 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
         mFragmentTransaction = mFragmentManager.beginTransaction();
         mFragmentTransaction.replace(R.id.container_fragment, new SendCommentFragment());
         mFragmentTransaction.commit();
+
+    }
+
+    @Override
+    public void englishButton() {
+        Toast.makeText(this, "English", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void frenchButton() {
+        Toast.makeText(this, "French", Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void spanishButton() {
+        Toast.makeText(this, "Spanish", Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void creoleButton() {
+        Toast.makeText(this, "Creole", Toast.LENGTH_LONG).show();
 
     }
 }
