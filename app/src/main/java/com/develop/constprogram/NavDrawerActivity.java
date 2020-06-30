@@ -319,6 +319,9 @@ LanguageSettingFragment.onButtonLanguageSettingFragmentSelected {
         mFragmentTransaction.replace(R.id.container_fragment, new UserDataPolicySettingFragment());
         mFragmentTransaction.commit();
     }
+    public void change(){
+        Toast.makeText(this, "Amos", Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public void copyrightButton() {
@@ -351,7 +354,7 @@ LanguageSettingFragment.onButtonLanguageSettingFragmentSelected {
 
     @Override
     public void allArticleTv() {
-        Toast.makeText(this, "Good", Toast.LENGTH_LONG).show();
+        change();
     }
 
     @Override
