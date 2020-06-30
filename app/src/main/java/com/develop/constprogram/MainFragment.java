@@ -2,6 +2,7 @@ package com.develop.constprogram;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +13,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.develop.constprogram.ui.home.MyprogramFragment;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements MyprogramFragment.XmlClickableTransfert {
     private onFragmentBtnSelected listener;
     ViewPager mViewPager;
 
@@ -26,7 +28,7 @@ public class MainFragment extends Fragment {
     TabItem mMyProgram;
     PagerAdapter mPagerAdapter, mAdapter;
     FragmentManager mFragmentManager;
-
+    MyprogramFragment.XmlClickableTransfert transfert;
 
 
 
@@ -69,7 +71,7 @@ public class MainFragment extends Fragment {
         }
     }
 */
-
+XmlClickable mMyProgramFragment;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -113,6 +115,18 @@ public class MainFragment extends Fragment {
         return  view;
     }
 
+    public  void addMoreProgram(){
+        switch (getId()){
+            case R.id.id_myprogram_tab:
+                //transfert.addMoreProgram(v);
+                Log.d("MainFrag","Inside mainFrag");
+
+                break;
+            default:
+                Log.d("MainFrag","Outside mainFrag");
+
+        }
+    }
 
 
     public  interface onFragmentBtnSelected{

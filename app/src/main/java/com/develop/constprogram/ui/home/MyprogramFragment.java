@@ -2,6 +2,7 @@ package com.develop.constprogram.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ public class MyprogramFragment extends Fragment implements XmlClickable {
     FirebaseUser user;
     FloatingActionButton add_more_program;
     XmlClickable myProgramClick;
+    FloatingActionButton fButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,7 +55,7 @@ public class MyprogramFragment extends Fragment implements XmlClickable {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_myprogram, container, false);
         fragementName="MyProgram";
-
+        fButton=view.findViewById(R.id.add_more_program);
         setUpRecyclerView(view,fragementName);
 
 //        view.findViewById(R.id.add_more_program)
@@ -118,8 +120,16 @@ public class MyprogramFragment extends Fragment implements XmlClickable {
 
 
     @Override
-    public void addMoreProgram(View v) {
-        startActivity(new Intent(getContext(),EventInformationFirstFragment.class));
+    public void addMoreProgram() {
 
+
+                startActivity(new Intent(getContext(),EventInformationFirstFragment.class));
+
+        }
+
+
+
+    public interface XmlClickableTransfert{
+        public void addMoreProgram();
     }
 }

@@ -11,6 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         layout="@layout/drawer_toolbar"
+        android:id="@+id/content"
+
         />
     <include
         android:layout_width="match_parent"
@@ -19,6 +21,7 @@
         />
 
     <com.google.android.material.navigation.NavigationView
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/navigationView"

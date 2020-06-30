@@ -2,8 +2,10 @@ package com.develop.constprogram;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +33,9 @@ import com.develop.constprogram.ui.settings.SettingFragment;
 import com.develop.constprogram.ui.settings.TermeUseSettingFragment;
 import com.develop.constprogram.ui.settings.UserDataPolicySettingFragment;
 import com.develop.constprogram.ui.subscription.SubscriptionFragment;
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 
 public class NavDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
@@ -338,12 +343,26 @@ LanguageSettingFragment.onButtonLanguageSettingFragmentSelected {
 
     @Override
     public void addCardPaymentButton() {
-        mFragmentManager = getSupportFragmentManager();
+       /* mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
         mFragmentTransaction.replace(R.id.container_fragment, new AddCreditCardPaymentFragment());
-        mFragmentTransaction.commit();
-    }
+        mFragmentTransaction.commit();*/
+       signOut();
 
+
+    }
+    public void signOut(){
+        AuthUI.getInstance()
+                .signOut(this)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        startActivity(new Intent(getApplicationContext(),Authentication.class));
+                        finish();
+                    }
+                });
+    }
     @Override
     public void otherSettingPaymentButton() {
         mFragmentManager = getSupportFragmentManager();

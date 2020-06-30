@@ -33,6 +33,11 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
         this.activityName=activityName;
     }
 
+    public ProgramAdapter(@NonNull FirestoreRecyclerOptions<ProgramModel> options,Boolean isIntoFavorite){
+        super(options);
+
+    }
+
     @Override
     protected void onBindViewHolder(@NonNull final ProgramHolder holder, int position, @NonNull final ProgramModel model) {
         holder.programTitle.setText(model.getProgramName());
@@ -43,15 +48,24 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
         holder.btnShare.setBackground(null);
 
         switch (activityName){
-            case "Recycle": case "Dashboard":
+            case "Recycle":
                 holder.btnFavorite.setImageResource(R.drawable.favorite);
-
+                holder.btnFavoriteActive.setImageResource(R.drawable.no_favorite);
                 break;
+            case "Dashboard":
+                holder.btnFavorite.setImageResource(R.drawable.favorite);
+                holder.btnFavoriteActiveD.setImageResource(R.drawable.no_favorite);
+                break;
+
+
+
+
             case "Favorite":
                 holder.btnDelete.setImageResource(R.drawable.delete_program_from_favorite);
                 holder.btnDelete.setBackground(null);
 
                 break;
+
             case "MyProgram":
                 holder.btnDelete.setImageResource(R.drawable.delete_program_from_favorite);
                 holder.btnDelete.setBackground(null);
@@ -93,6 +107,37 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
 
         switch (activityName){
             case "Recycle":
+
+                holder.btnFavorite.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(), "Favorite Button"+model.getProgramIdentity(), Toast.LENGTH_LONG).show();
+
+                        ProgramModel programModel= new ProgramModel();
+                        programModel.addToFavorite(model.getProgramIdentity());
+                        holder.btnFavoriteActive.setImageResource(R.drawable.no_favorite);
+                        holder.btnFavorite.setVisibility(View.GONE);
+                        holder.btnFavoriteActive.setVisibility(View.VISIBLE);
+
+
+
+                    }
+                });
+                holder.btnFavoriteActive.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        ProgramModel programModel= new ProgramModel();
+                        programModel.deleteToFavorite(model.getProgramIdentity());
+                        holder.btnFavorite.setImageResource(R.drawable.favorite);
+                        holder.btnFavoriteActive.setVisibility(View.GONE);
+                        holder.btnFavorite.setVisibility(View.VISIBLE);
+
+
+
+                    }
+                });
+                break;
             case "Dashboard":
                 holder.btnFavorite.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -101,6 +146,24 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
 
                         ProgramModel programModel= new ProgramModel();
                         programModel.addToFavorite(model.getProgramIdentity());
+                        holder.btnFavoriteActiveD.setImageResource(R.drawable.no_favorite);
+                        holder.btnFavorite.setVisibility(View.GONE);
+                        holder.btnFavoriteActiveD.setVisibility(View.VISIBLE);
+
+
+
+                    }
+                });
+                holder.btnFavoriteActiveD.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        ProgramModel programModel= new ProgramModel();
+                        programModel.deleteToFavorite(model.getProgramIdentity());
+                        holder.btnFavorite.setImageResource(R.drawable.favorite);
+                        holder.btnFavoriteActiveD.setVisibility(View.GONE);
+                        holder.btnFavorite.setVisibility(View.VISIBLE);
+
 
 
                     }
@@ -149,6 +212,10 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
         ImageView programImage;
         ImageButton btnShare;
         ImageButton btnFavorite;
+        ImageButton btnFavoriteActive;
+        ImageButton btnFavoriteActiveD;
+
+
         ImageButton btnUpdate;
         ImageButton btnDelete;
 
@@ -167,6 +234,8 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
                     programImage=itemView.findViewById(R.id.imProgramList);
                     btnShare=itemView.findViewById(R.id.imbShareProgramList);
                     btnFavorite=itemView.findViewById(R.id.imbFavoriteProgramList);
+                    btnFavoriteActive=itemView.findViewById(R.id.imbFavoriteActiveProgramList);
+
                     break;
                 case "Favorite":
                     programTitle=itemView.findViewById(R.id.txtNameFavoriteProgramList);
@@ -204,6 +273,8 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
                     programImage=itemView.findViewById(R.id.imProgramDashboard);
                     btnShare=itemView.findViewById(R.id.imbShareProgramDashboard);
                     btnFavorite=itemView.findViewById(R.id.imbFavoriteProgramDashboard);
+                   btnFavoriteActiveD=itemView.findViewById(R.id.imbFavoriteActiveDProgramList);
+
                     break;
 
 

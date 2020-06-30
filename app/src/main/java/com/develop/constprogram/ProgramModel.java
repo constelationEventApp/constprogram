@@ -2,6 +2,7 @@ package com.develop.constprogram;
 
 import android.provider.DocumentsContract;
 import android.util.Log;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 
@@ -43,9 +44,11 @@ public class ProgramModel {
     List<ProgramModel> listProgram;
     private StorageReference mStorageRef;
     CollectionReference mFireStore;
+    FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
 
 
-   //Begin Constructor
+
+    //Begin Constructor
 
     public ProgramModel(String programDate, String programName, String programAddress, String programIdentity, String image, String programOrganizer, String programTypeOfEvent, String programStartDate, String programEndDate, String programStartTime, String programEndTime, String programSummary, String userIdentity) {
         this.programDate = programDate;
@@ -61,6 +64,7 @@ public class ProgramModel {
         this.programStartTime=programStartTime;
         this.programEndTime=programEndTime;
         this.programSummary=programSummary;
+
         mFireStore= FirebaseFirestore.getInstance().collection("program");
 
     }
@@ -72,6 +76,14 @@ public class ProgramModel {
     }
     //End of Constructors
 
+    public void deleteToFavorite(String programIdentity){
+        if(programIdentity!=null){
+            mFireStore=FirebaseFirestore.getInstance().collection("users")
+                    .document(user.getUid()).collection("favorite");
+            mFireStore.document(programIdentity)
+                    .delete();
+        }
+    }
 
     public void addToFavorite(String programIdentity){
         if(programIdentity!=null){
@@ -80,7 +92,6 @@ public class ProgramModel {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                     ProgramModel programModel= documentSnapshot.toObject(ProgramModel.class);
-                    FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
                     insertProgramToFavorite(programModel,user.getUid());
                     Log.d(TAG, "Inside add to favorite");
 
@@ -117,8 +128,10 @@ public class ProgramModel {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
+
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
+
                                 Log.d(TAG, "Program Already inserted To favorite");
                             } else {
                                 Log.d(TAG, "No such document");
@@ -142,6 +155,7 @@ public class ProgramModel {
                             }
                         } else {
                             Log.d(TAG, "get failed with ", task.getException());
+
                         }
                     }
                 });

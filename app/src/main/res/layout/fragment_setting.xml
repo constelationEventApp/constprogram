@@ -90,7 +90,7 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#00FFFFFF"
-        android:drawableStart="@drawable/copyright"
+        android:drawableStart="@drawable/favorite"
         android:drawableEnd="@drawable/next"
         android:text="@string/strCopyright"
         android:textAlignment="viewStart"

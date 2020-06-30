@@ -5,6 +5,7 @@
     android:id="@+id/id_fragment_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
     tools:context=".MainFragment">
 
     <com.google.android.material.tabs.TabLayout

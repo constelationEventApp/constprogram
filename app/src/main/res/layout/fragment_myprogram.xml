@@ -22,6 +22,6 @@
         android:layout_gravity="top|end"
         android:layout_margin="8dp"
         android:src="@drawable/ic_add"
-        android:onClick="addMoreProgram"/>
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
