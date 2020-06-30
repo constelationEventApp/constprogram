@@ -82,6 +82,8 @@ public class ProgramModel {
                     ProgramModel programModel= documentSnapshot.toObject(ProgramModel.class);
                     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
                     insertProgramToFavorite(programModel,user.getUid());
+                    Log.d(TAG, "Inside add to favorite");
+
 
                 }
             });
@@ -110,9 +112,42 @@ public class ProgramModel {
         mFireStore= FirebaseFirestore.getInstance().collection("users");
         CollectionReference collection=mFireStore.document(userIdentity).collection("favorite");
 
-        collection.whereEqualTo("programIdentity",programModel.programIdentity)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        collection.document(programModel.programIdentity).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Log.d(TAG, "Program Already inserted To favorite");
+                            } else {
+                                Log.d(TAG, "No such document");
+                                //No such document insert
+                                mFireStore= FirebaseFirestore.getInstance().collection("users");
+                                mFireStore.document(userIdentity).collection("favorite").document(programModel.programIdentity).set(programModel)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Log.d(TAG, "Program successfully written into Favorite!");
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.w(TAG, "Error adding document to Favorite", e);
+                                            }
+                                        });
+                                //end insert
+
+                            }
+                        } else {
+                            Log.d(TAG, "get failed with ", task.getException());
+                        }
+                    }
+                });
+
+
+              /*  .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
@@ -147,10 +182,7 @@ public class ProgramModel {
                         }
                     }
                 });
-
-
-
-
+*/
 
     }
     //Other Methode

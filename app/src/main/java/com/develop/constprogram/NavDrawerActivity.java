@@ -2,6 +2,7 @@ package com.develop.constprogram;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -20,6 +22,7 @@ import com.develop.constprogram.ui.HelpCommentFragment;
 import com.develop.constprogram.ui.HistoryFragment;
 import com.develop.constprogram.ui.MethodPaymentFragment;
 import com.develop.constprogram.ui.WhoToFollowFragment;
+import com.develop.constprogram.ui.home.MyprogramFragment;
 import com.develop.constprogram.ui.settings.SettingFragment;
 import com.develop.constprogram.ui.subscription.SubscriptionFragment;
 import com.google.android.material.navigation.NavigationView;
@@ -31,6 +34,7 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
     NavigationView mNavigationView;
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
+    XmlClickable mMyProgramFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +61,14 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
         mFragmentTransaction.commit();
 
     }
-
+    public  void addMoreProgram(View v){
+        switch (v.getId()){
+            case R.id.add_more_program:
+                mMyProgramFragment.addMoreProgram(v);
+                break;
+            default:
+        }
+    }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         mDrawerLayout.closeDrawer(GravityCompat.START);

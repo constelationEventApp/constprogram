@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="3dp"
     android:background="@drawable/custom_program_list"
     android:descendantFocusability="blocksDescendants"
-    android:outlineSpotShadowColor="@color/bleu_fonce_transparent"
-    >
+    android:outlineSpotShadowColor="@color/bleu_fonce_transparent">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/imMyProgramList"
             android:layout_width="@dimen/dimImgProgramListWidth"
             android:layout_height="@dimen/dimImgProgramListHeight"
             android:padding="0dp"
-            android:background="@drawable/img"/>
+            app:srcCompat="@drawable/image_holder" />
 
         <LinearLayout android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:text="identifiant"
                     android:visibility="invisible"
-                    android:layout_weight="9"
+                    android:layout_weight="15"
                     android:layout_gravity="left|center_vertical"
 
                     />
@@ -83,7 +83,8 @@
                     android:layout_height="@dimen/dimFaShProgramList"
                     android:padding="5dp"
                     android:layout_weight="1"
-                    android:layout_gravity="right"                    />
+                    android:layout_gravity="right"
+                    android:background="#00000000"/>
 
                 <ImageButton
                     android:id="@+id/imbDeleteMyProgramList"
@@ -92,6 +93,7 @@
                     android:padding="5dp"
                     android:layout_weight="1"
                     android:layout_gravity="right"
+                    android:background="#00000000"
                     />
 
 

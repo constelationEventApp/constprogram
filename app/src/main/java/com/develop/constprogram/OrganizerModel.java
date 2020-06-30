@@ -81,11 +81,6 @@ public class OrganizerModel {
                 }
             }
         });
-
-
-
-
-
     }
 
     public String getOrganizerIdentity() {

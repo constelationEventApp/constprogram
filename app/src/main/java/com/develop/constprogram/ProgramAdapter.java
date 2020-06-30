@@ -36,7 +36,7 @@ public class ProgramAdapter extends FirestoreRecyclerAdapter<ProgramModel, Progr
     @Override
     protected void onBindViewHolder(@NonNull final ProgramHolder holder, int position, @NonNull final ProgramModel model) {
         holder.programTitle.setText(model.getProgramName());
-        holder.programDate.setText(model.getProgramDate());
+        holder.programDate.setText(model.getProgramStartDate());
         holder.programAddress.setText(model.getProgramAddress());
         holder.programIdentity.setText(model.getProgramIdentity());
         holder.btnShare.setImageResource(R.drawable.share);
