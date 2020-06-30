@@ -70,6 +70,102 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
     }
 
     @Override
+    public void onBackPressed() {
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        String fragmentClass = mFragmentManager.getFragments().toString();
+        String fragmentName="";
+        int length = fragmentClass.length();
+        int i=1;
+        char element = 'a';
+        while (i < length && element != '{'){
+            element = fragmentClass.charAt(i);
+            if(element != '{'){
+                fragmentName+=element;
+
+            }
+            i++;
+        }
+
+
+        switch (fragmentName){
+            case "HelpCommentFragment" :{
+                mFragmentTransaction.replace(R.id.container_fragment, new MainFragment());
+                break;
+            }
+            case "AccountFragment":{
+                mFragmentTransaction.replace(R.id.container_fragment, new MainFragment());
+                break;
+            }
+            case "MethodPaymentFragment":{
+                mFragmentTransaction.replace(R.id.container_fragment, new MainFragment());
+                break;
+            }
+            case "SettingFragment":{
+                mFragmentTransaction.replace(R.id.container_fragment, new MainFragment());
+                break;
+            }
+            case "FavoriteFragment":{
+                mFragmentTransaction.replace(R.id.container_fragment, new MainFragment());
+                break;
+            }
+            case "WhoToFollowFragment":{
+                mFragmentTransaction.replace(R.id.container_fragment, new MainFragment());
+                break;
+            }
+            case "SubscriptionFragment":{
+                mFragmentTransaction.replace(R.id.container_fragment, new MainFragment());
+                break;
+            }
+            case "HistoryFragment":{
+                mFragmentTransaction.replace(R.id.container_fragment, new MainFragment());
+                break;
+            }
+            case "AboutUsFragment":{
+                mFragmentTransaction.replace(R.id.container_fragment, new MainFragment());
+                break;
+            }
+
+            case "CopyrightSettingFragment" :{
+                mFragmentTransaction.replace(R.id.container_fragment, new SettingFragment());
+                break;
+            }
+            case "LanguageSettingFragment" :{
+                mFragmentTransaction.replace(R.id.container_fragment, new SettingFragment());
+                break;
+            }
+            case "PrivacySettingFragment" :{
+                mFragmentTransaction.replace(R.id.container_fragment, new SettingFragment());
+                break;
+            }
+            case "TermeUseSettingFragment" :{
+                mFragmentTransaction.replace(R.id.container_fragment, new SettingFragment());
+                break;
+            }
+            case "UserDataPolicySettingFragment" :{
+                mFragmentTransaction.replace(R.id.container_fragment, new SettingFragment());
+                break;
+            }
+            case "AddCreditCardPaymentFragment":{
+                mFragmentTransaction.replace(R.id.container_fragment, new MethodPaymentFragment());
+                break;
+            }
+            case "OtherSettingPaymentFragment":{
+                mFragmentTransaction.replace(R.id.container_fragment, new MethodPaymentFragment());
+                break;
+            }
+            default:{
+               message();
+               break;
+            }
+
+        }
+        mFragmentTransaction.commit();
+
+
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         mDrawerLayout.closeDrawer(GravityCompat.START);
         if(menuItem.getItemId() == R.id.nav_home){
@@ -258,5 +354,6 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
         mFragmentTransaction = mFragmentManager.beginTransaction();
         mFragmentTransaction.replace(R.id.container_fragment, new SendCommentFragment());
         mFragmentTransaction.commit();
+
     }
 }
