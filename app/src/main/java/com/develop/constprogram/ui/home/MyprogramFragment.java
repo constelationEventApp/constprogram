@@ -36,7 +36,7 @@ import static com.firebase.ui.auth.AuthUI.getApplicationContext;
  * Use the {@link MyprogramFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MyprogramFragment extends Fragment implements XmlClickable {
+public class MyprogramFragment extends Fragment  {
 
 
 
@@ -46,7 +46,7 @@ public class MyprogramFragment extends Fragment implements XmlClickable {
     private String fragementName;
     FirebaseUser user;
     FloatingActionButton add_more_program;
-    XmlClickable myProgramClick;
+    XmlClickable xmlClickable;
     FloatingActionButton fButton;
 
     @Override
@@ -55,16 +55,18 @@ public class MyprogramFragment extends Fragment implements XmlClickable {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_myprogram, container, false);
         fragementName="MyProgram";
+
         fButton=view.findViewById(R.id.add_more_program);
         setUpRecyclerView(view,fragementName);
 
-//        view.findViewById(R.id.add_more_program)
-//                .setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        startActivity(new Intent(getActivity(),EventInformationFirstFragment.class));
-//                    }
-//                });
+        fButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getActivity(), EventInformationFirstActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
@@ -119,17 +121,17 @@ public class MyprogramFragment extends Fragment implements XmlClickable {
 
 
 
-    @Override
-    public void addMoreProgram() {
 
+   /* @Override
+    public void addMoreProgram(View v) {
 
                 startActivity(new Intent(getContext(),EventInformationFirstFragment.class));
 
         }
+*/
 
 
-
-    public interface XmlClickableTransfert{
+    public interface XmlClickable{
         public void addMoreProgram();
     }
 }

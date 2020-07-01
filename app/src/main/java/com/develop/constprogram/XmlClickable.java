@@ -7,5 +7,5 @@ public interface XmlClickable {
 
 
 
-    void addMoreProgram();
+    void addMoreProgram(View v);
 }

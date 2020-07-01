@@ -40,24 +40,8 @@ public class FollowerModel {
         com.develop.constprogram.WhoIFollowModel whoIFollowModel = new com.develop.constprogram.WhoIFollowModel();
         whoIFollowModel.setOrganizerIdentity(organizerName);
         mFireStore.document(user.getUid())
-                .collection("whoifollow");
-        mFireStore.document(organizerName)
-                .set(whoIFollowModel)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot successfully written into whoIFollow!");
-                        WhoFollowMeModel whoFollowMeModel= new WhoFollowMeModel();
-                        whoFollowMeModel.youFollowMe(organizerName);
-
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        //Log.w(TAG, "Error adding document", e);
-                    }
-                });
+                .collection("whoifollow")
+                .add(whoIFollowModel);
     }
 
 

@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.develop.constprogram.ui.subscription.FollowerAdapter;
+import com.develop.constprogram.ui.subscription.FollowerModel;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,7 +40,7 @@ public class OrganizerAdapter extends FirestoreRecyclerAdapter<OrganizerModel, O
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull OrganizerHolder holder, int position, @NonNull OrganizerModel model) {
+    protected void onBindViewHolder(@NonNull OrganizerHolder holder, int position, @NonNull final OrganizerModel model) {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -69,8 +71,8 @@ public class OrganizerAdapter extends FirestoreRecyclerAdapter<OrganizerModel, O
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "You Want to follow", Toast.LENGTH_LONG).show();
-
-
+                FollowerModel followerModel = new FollowerModel();
+                followerModel.iFollowYou(model.getOrganizerIdentity());
             }
         });
 

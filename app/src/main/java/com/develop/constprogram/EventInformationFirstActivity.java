@@ -164,12 +164,6 @@ public class EventInformationFirstActivity extends AppCompatActivity implements 
             finish();
         }
 
-        @Override
-        public void onBackPressed() {
-            Intent intent = new Intent(EventInformationFirstActivity.this, WelcomeActivity.class);
-            startActivity(intent);
-            finish();
-        }
 
         public void signOut(View view){
             AuthUI.getInstance()

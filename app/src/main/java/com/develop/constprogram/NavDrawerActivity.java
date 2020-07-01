@@ -26,6 +26,7 @@ import com.develop.constprogram.ui.HistoryFragment;
 import com.develop.constprogram.ui.MethodPaymentFragment;
 import com.develop.constprogram.ui.OtherSettingPaymentFragment;
 import com.develop.constprogram.ui.WhoToFollowFragment;
+import com.develop.constprogram.ui.home.MyprogramFragment;
 import com.develop.constprogram.ui.settings.CopyrightSettingFragment;
 import com.develop.constprogram.ui.settings.LanguageSettingFragment;
 import com.develop.constprogram.ui.settings.PrivacySettingFragment;
@@ -41,7 +42,7 @@ import com.google.android.material.navigation.NavigationView;
 public class NavDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         MainFragment.onFragmentBtnSelected, SettingFragment.onButtonSettingFragmentSelected,
         MethodPaymentFragment.onButtonPaymentFragmentSelected, HelpCommentFragment.onButtonHelpCommentFragmentSelected,
-LanguageSettingFragment.onButtonLanguageSettingFragmentSelected {
+LanguageSettingFragment.onButtonLanguageSettingFragmentSelected , MyprogramFragment.XmlClickable{
     DrawerLayout mDrawerLayout;
     ActionBarDrawerToggle mActionBarDrawerToggle;
     Toolbar mToolbar;
@@ -406,5 +407,11 @@ LanguageSettingFragment.onButtonLanguageSettingFragmentSelected {
     public void creoleButton() {
         Toast.makeText(this, "Creole", Toast.LENGTH_LONG).show();
 
+    }
+
+    @Override
+    public void addMoreProgram() {
+
+        Toast.makeText(this, "Im tring", Toast.LENGTH_SHORT).show();
     }
 }
