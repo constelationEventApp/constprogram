@@ -15,7 +15,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imWhoIFowllow"
+            android:id="@+id/followerImage"
             android:layout_width="@dimen/dimImgOrganizerListWidth"
             android:layout_height="@dimen/dimImgOrganizerListHeight"
             android:padding="0dp"
@@ -30,7 +30,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/nameWhoIFollow"
+                    android:id="@+id/followerName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Follower"
