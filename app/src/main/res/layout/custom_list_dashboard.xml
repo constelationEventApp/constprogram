@@ -78,7 +78,7 @@
                 />
 
                 <ImageButton
-                    android:id="@+id/imbFavoriteProgramDashboard"
+                    android:id="@+id/imbFavoriteDProgramDashboard"
                     android:layout_width="@dimen/dimFaShProgramList"
                     android:layout_height="@dimen/dimFaShProgramList"
                     android:layout_marginTop="10dp"

@@ -44,7 +44,12 @@ public class OrganizerAdapter extends FirestoreRecyclerAdapter<OrganizerModel, O
 
         holder.organizerName.setText(model.getOrganizerName());
         holder.organizerIdentity.setText(model.getOrganizerIdentity());
-        holder.organizerCountFollower.setText("followers number");
+
+        if(model.getOrganizerCounterFollower()<=1){
+            holder.organizerCountFollower.setText(model.getOrganizerCounterFollower()+ "Follower");
+        }else{
+            holder.organizerCountFollower.setText(model.getOrganizerCounterFollower()+ "Followers");
+        }
         holder.btnFollow.setText("Follow");
 
         if(user.getDisplayName()==model.getOrganizerName()){

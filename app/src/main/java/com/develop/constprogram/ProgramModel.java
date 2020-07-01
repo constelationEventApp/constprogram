@@ -45,6 +45,8 @@ public class ProgramModel {
     private StorageReference mStorageRef;
     CollectionReference mFireStore;
     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+    Boolean isToFavorite=false;
+    Boolean isDeleteToFavorite=false;
 
 
 
@@ -76,16 +78,30 @@ public class ProgramModel {
     }
     //End of Constructors
 
-    public void deleteToFavorite(String programIdentity){
+    public boolean deleteToFavorite(String programIdentity){
         if(programIdentity!=null){
             mFireStore=FirebaseFirestore.getInstance().collection("users")
                     .document(user.getUid()).collection("favorite");
             mFireStore.document(programIdentity)
-                    .delete();
+                    .delete()
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d(TAG, "DocumentSnapshot successfully deleted!");
+                            isDeleteToFavorite=true;
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w(TAG, "Error deleting document", e);
+                        }
+                    });
         }
+        return isDeleteToFavorite;
     }
 
-    public void addToFavorite(String programIdentity){
+    public boolean addToFavorite(String programIdentity){
         if(programIdentity!=null){
             mFireStore.document(programIdentity)
                     .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -98,24 +114,9 @@ public class ProgramModel {
 
                 }
             });
-/*.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Log.d(TAG, "Organiser Already inserted");
-                            mFireStore= FirebaseFirestore.getInstance().collection("program");
 
-
-                        } else {
-                            Log.d(TAG, "No such document");
-                        }
-                    }
-                }
-            });*/
         }
-
+        return isToFavorite;
     }
 
     public void insertProgramToFavorite(final ProgramModel programModel, final String userIdentity){
@@ -137,11 +138,16 @@ public class ProgramModel {
                                 Log.d(TAG, "No such document");
                                 //No such document insert
                                 mFireStore= FirebaseFirestore.getInstance().collection("users");
-                                mFireStore.document(userIdentity).collection("favorite").document(programModel.programIdentity).set(programModel)
+                                mFireStore.document(userIdentity)
+                                        .collection("favorite")
+                                        .document(programModel.programIdentity)
+                                        .set(programModel)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 Log.d(TAG, "Program successfully written into Favorite!");
+                                                isToFavorite=true;
+
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {
