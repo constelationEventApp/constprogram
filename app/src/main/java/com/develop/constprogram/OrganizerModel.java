@@ -10,6 +10,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -21,15 +23,18 @@ import com.google.firebase.storage.StorageReference;
 public class OrganizerModel {
     private String organizerName;
     private String organizerIdentity;
+    private int organizerCounterFollower=0;
     CollectionReference mFireStore;
+    FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
 
     String TAG ="OrganizerModel";
 
 
 
-    public OrganizerModel(String organizerName, String organizerIdentity) {
+    public OrganizerModel(String organizerName, String organizerIdentity, int organizerCounterFollower) {
         this.organizerName = organizerName;
         this.organizerIdentity=organizerIdentity;
+        this.organizerCounterFollower=organizerCounterFollower;
         mFireStore= FirebaseFirestore.getInstance().collection("organizer");
     }
 
@@ -38,13 +43,6 @@ public class OrganizerModel {
 
     }
 
-    public String getOrganizerName() {
-        return organizerName;
-    }
-
-    public void setOrganizerName(String organizerName) {
-        this.organizerName = organizerName;
-    }
 
     public void insertOrganizer(final OrganizerModel organizerModel, final String idProgram){
         //Test if organizer is already insert
@@ -81,11 +79,6 @@ public class OrganizerModel {
                 }
             }
         });
-
-
-
-
-
     }
 
     public String getOrganizerIdentity() {
@@ -94,5 +87,21 @@ public class OrganizerModel {
 
     public void setOrganizerIdentity(String organizerIdentity) {
         this.organizerIdentity = organizerIdentity;
+    }
+
+    public int getOrganizerCounterFollower() {
+        return organizerCounterFollower;
+    }
+
+    public void setOrganizerCounterFollower(int organizerCounterFollower) {
+        this.organizerCounterFollower = organizerCounterFollower;
+    }
+
+    public String getOrganizerName() {
+        return organizerName;
+    }
+
+    public void setOrganizerName(String organizerName) {
+        this.organizerName = organizerName;
     }
 }

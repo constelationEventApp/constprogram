@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.text.DateFormat;
 import java.util.Calendar;
 
 public class EventInformationFirstActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener
@@ -85,7 +86,12 @@ public class EventInformationFirstActivity extends AppCompatActivity implements 
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                     month++;
-                    String date = month +"/" + dayOfMonth + "/" + year;
+                    Calendar c= Calendar.getInstance();
+                    c.set(Calendar.MONTH, month);
+                    c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+              //      String date = month +"/" + dayOfMonth + "/" + year;
+                    String date= DateFormat.getDateInstance().format(c.getTime());
                     mDisplayStartDate.setText(date);
 
                 }
@@ -94,7 +100,13 @@ public class EventInformationFirstActivity extends AppCompatActivity implements 
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                     month++;
-                    String date = month +"/" + dayOfMonth + "/" + year;
+                  //  String date = month +"/" + dayOfMonth + "/" + year;
+                    Calendar c= Calendar.getInstance();
+                    c.set(Calendar.MONTH, month);
+                    c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                    //      String date = month +"/" + dayOfMonth + "/" + year;
+                    String date= DateFormat.getDateInstance().format(c.getTime());
                     mDisplayEndDate.setText(date);
                 }
             };

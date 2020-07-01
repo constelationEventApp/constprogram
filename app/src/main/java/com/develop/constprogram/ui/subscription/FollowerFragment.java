@@ -4,10 +4,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.develop.constprogram.ui.subscription.FollowerAdapter;
+import com.develop.constprogram.ui.subscription.FollowerModel;
 import com.develop.constprogram.R;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,10 +67,61 @@ public class FollowerFragment extends Fragment {
         }
     }
 
+    private CollectionReference mFireStore=FirebaseFirestore.getInstance()
+            .collection("users");
+
+    private FollowerAdapter adapter;
+    private String fragmentName;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_follower, container, false);
+        View view= inflater.inflate(R.layout.fragment_follower, container, false);
+        fragmentName="Follower";
+        setUpRecyclerView(view,fragmentName);
+        return view;
+    }
+    private void setUpRecyclerView(View view, String fragment) {
+         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+
+        Query query=  mFireStore.document(user.getUid())
+                .collection("whoifollow");
+        FirestoreRecyclerOptions<FollowerModel> options= new FirestoreRecyclerOptions.Builder<FollowerModel>()
+                .setQuery(query,FollowerModel.class)
+                .build();
+        adapter=new FollowerAdapter(options,fragment);
+
+        RecyclerView recyclerView = view.findViewById(R.id.follower);
+        recyclerView.setHasFixedSize(true);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new FollowerAdapter.ClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+
+
+
+                //  Toast.makeText(Recycle.this, identifiant.getText(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onItemLongClick(int position, View v) {
+            }
+        });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }

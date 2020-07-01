@@ -1,6 +1,8 @@
 package com.develop.constprogram.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,80 +13,62 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.develop.constprogram.Authentication;
+import com.develop.constprogram.EventInformationFirstActivity;
+import com.develop.constprogram.EventInformationFirstFragment;
+import com.develop.constprogram.NavDrawerActivity;
 import com.develop.constprogram.ProgramAdapter;
 import com.develop.constprogram.ProgramModel;
 import com.develop.constprogram.R;
+import com.develop.constprogram.XmlClickable;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
+
 /*/**
  * A simple {@link Fragment} subclass.
  * Use the {@link MyprogramFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MyprogramFragment extends Fragment {
+public class MyprogramFragment extends Fragment implements XmlClickable {
 
-    /*/ TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public MyprogramFragment() {
-        // Required empty public constructor
-    }*/
-
-    /*/**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MyprogramFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-  /*  public static MyprogramFragment newInstance(String param1, String param2) {
-        MyprogramFragment fragment = new MyprogramFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }*/
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference programRef=db.collection("program");
     private ProgramAdapter adapter;
     private String fragementName;
     FirebaseUser user;
+    FloatingActionButton add_more_program;
+    XmlClickable myProgramClick;
+    FloatingActionButton fButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_myprogram, container, false);
-
         fragementName="MyProgram";
+        fButton=view.findViewById(R.id.add_more_program);
         setUpRecyclerView(view,fragementName);
 
+//        view.findViewById(R.id.add_more_program)
+//                .setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        startActivity(new Intent(getActivity(),EventInformationFirstFragment.class));
+//                    }
+//                });
         return view;
     }
+
+
 
     private void setUpRecyclerView(View view, String fragment) {
         //Query query= programRef;
@@ -107,10 +91,10 @@ public class MyprogramFragment extends Fragment {
             @Override
             public void onItemClick(int position, View v) {
 
-                TextView identifiant = (TextView) v.findViewById(R.id.identifiantProgramList);
+                //TextView identifiant = (TextView) v.findViewById(R.id.identifiantProgramList);
 
 
-                Toast.makeText(getContext(), identifiant.getText(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), identifiant.getText(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -118,6 +102,8 @@ public class MyprogramFragment extends Fragment {
             }
         });
     }
+
+
 
     @Override
     public void onStart() {
@@ -129,5 +115,21 @@ public class MyprogramFragment extends Fragment {
     public void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+
+
+
+    @Override
+    public void addMoreProgram() {
+
+
+                startActivity(new Intent(getContext(),EventInformationFirstFragment.class));
+
+        }
+
+
+
+    public interface XmlClickableTransfert{
+        public void addMoreProgram();
     }
 }
