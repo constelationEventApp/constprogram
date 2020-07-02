@@ -3,9 +3,9 @@ package com.develop.constprogram;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,7 +19,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.develop.constprogram.ui.AboutUsFragment;
 import com.develop.constprogram.ui.AccountFragment;
-import com.develop.constprogram.ui.AddCreditCardPaymentFragment;
 import com.develop.constprogram.ui.FavoriteFragment;
 import com.develop.constprogram.ui.HelpCommentFragment;
 import com.develop.constprogram.ui.HistoryFragment;
@@ -37,6 +36,8 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.Locale;
 
 public class NavDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         MainFragment.onFragmentBtnSelected, SettingFragment.onButtonSettingFragmentSelected,
@@ -392,8 +393,16 @@ LanguageSettingFragment.onButtonLanguageSettingFragmentSelected {
 
     @Override
     public void frenchButton() {
-        Toast.makeText(this, "French", Toast.LENGTH_LONG).show();
+        String languageToLoad  = "fr_FR";
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        this.getResources().updateConfiguration(config,this.getResources().getDisplayMetrics());
 
+        Intent intent = new Intent(NavDrawerActivity.this, NavDrawerActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     @Override

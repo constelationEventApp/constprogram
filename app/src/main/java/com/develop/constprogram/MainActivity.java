@@ -22,7 +22,7 @@ Button btn, btnListDashboard, pickImage;
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(), NavDrawerActivity.class));
+                startActivity(new Intent(getApplicationContext(), Authentication.class));
                 finish();
             }
         },2000);
