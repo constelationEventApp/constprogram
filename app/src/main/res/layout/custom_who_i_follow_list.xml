@@ -31,10 +31,14 @@
 
                 <TextView
                     android:id="@+id/followerName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Follower"
-                    android:textSize="13dp"
+                    android:text="@string/strNameOrganizerList"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/tenDpMarginLeft"
+                    android:padding="2dp"
+                    android:textColor="@color/red_transparent"
+                    android:textSize="@dimen/dimOrganizerName"
                     android:layout_weight="20"
                     android:layout_gravity="left|center_vertical"
 

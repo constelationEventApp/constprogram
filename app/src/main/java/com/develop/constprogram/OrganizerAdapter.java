@@ -33,7 +33,9 @@ public class OrganizerAdapter extends FirestoreRecyclerAdapter<OrganizerModel, O
     private  Context context;
     private static ClickListener clickListener;
     private String activityName;
-    FirebaseUser user;
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    ;
+    private String organizerId;
 
 
 
@@ -45,11 +47,12 @@ public class OrganizerAdapter extends FirestoreRecyclerAdapter<OrganizerModel, O
     @Override
     protected void onBindViewHolder(@NonNull final OrganizerHolder holder, int position, @NonNull final OrganizerModel model) {
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        organizerId=model.getOrganizerIdentity();
 
-
-        if(user.getUid()==holder.organizerIdentity.getText()){
-
+        if(user.getUid().equals(model.getOrganizerIdentity())){
+            //Hide User
+            holder.itemView.setVisibility(View.GONE);
+            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0,0));
 
         }else{
             Log.d("testd", "they are diferent:"+ user.getUid()+" / " +model.getOrganizerIdentity());
@@ -74,9 +77,6 @@ public class OrganizerAdapter extends FirestoreRecyclerAdapter<OrganizerModel, O
                         .fit().centerCrop().into(holder.organizerImage);
             }
         }
-
-
-
 
 
         holder.btnFollow.setOnClickListener(new View.OnClickListener() {
@@ -122,12 +122,17 @@ public class OrganizerAdapter extends FirestoreRecyclerAdapter<OrganizerModel, O
 
         public  OrganizerHolder(View itemView){
             super(itemView);
+
+
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
             context = itemView.getContext();
 
+
+
             switch (activityName){
                 case "whoToFollow":
+
                     organizerName=itemView.findViewById(R.id.txtNameOrganizerList);
                     organizerImage=itemView.findViewById(R.id.imOrganizerList);
                     organizerCountFollower=itemView.findViewById(R.id.countFollowerOrganizerList);

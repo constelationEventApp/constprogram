@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -41,7 +42,7 @@ public class FollowingModel {
 
     }
 
-    public void youFollowMe(String organizerIdentity){
+    public void youFollowMe(final String organizerIdentity){
         FollowingModel followModel= new FollowingModel();
         followModel.setUserIdentity(user.getUid());
         followModel.setUserName(user.getDisplayName());
@@ -52,6 +53,8 @@ public class FollowingModel {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d(TAG, "Yes you fallow me");
+                        mFireStore.document(organizerIdentity)
+                                .update("organizerCounterFollower", FieldValue.increment(1));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -72,13 +75,21 @@ public class FollowingModel {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        CollectionReference mFireStore= FirebaseFirestore.getInstance().collection("users");
-                        mFireStore.document(user.getUid())
-                                .collection("whoifollow");
-                                mFireStore.document(organizerIdentity).delete()
+                        Log.w(TAG, "Inside delete who follow me succesfull");
+
+                        FirebaseFirestore.getInstance().collection("users")
+                                .document(user.getUid())
+                                .collection("whoifollow")
+                                .document(organizerIdentity)
+                                .delete()
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
+                                        FirebaseFirestore.getInstance()
+                                                .collection("organizer")
+                                                .document(organizerIdentity)
+                                                .update("organizerCounterFollower", FieldValue.increment(-1));
+                                        Log.w(TAG, "Inside value update counter");
 
                                     }
                                 })

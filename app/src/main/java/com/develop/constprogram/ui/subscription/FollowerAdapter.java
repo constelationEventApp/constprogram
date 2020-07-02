@@ -50,7 +50,8 @@ public class FollowerAdapter extends FirestoreRecyclerAdapter<FollowerModel, Fol
        /* Picasso.get().load(user.getPhotoUrl())
                 .placeholder(R.drawable.image_holder)
                 .fit().centerCrop().into(holder.image);*/
-        Picasso.get().load(R.drawable.image_holder).into(holder.image);
+       // Picasso.get().load(R.drawable.image_holder).into(holder.image);
+        holder.image.setImageResource(R.drawable.image_holder);
 
 
         holder.btnUnfollow.setOnClickListener(new View.OnClickListener() {
