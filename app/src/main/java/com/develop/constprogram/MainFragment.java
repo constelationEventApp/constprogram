@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,7 +19,7 @@ import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 
-public class MainFragment extends Fragment implements MyprogramFragment.XmlClickableTransfert {
+public class MainFragment extends Fragment  {
     private onFragmentBtnSelected listener;
     ViewPager mViewPager;
 
@@ -28,7 +29,6 @@ public class MainFragment extends Fragment implements MyprogramFragment.XmlClick
     TabItem mMyProgram;
     PagerAdapter mPagerAdapter, mAdapter;
     FragmentManager mFragmentManager;
-    MyprogramFragment.XmlClickableTransfert transfert;
 
 
 
@@ -115,18 +115,6 @@ XmlClickable mMyProgramFragment;
         return  view;
     }
 
-    public  void addMoreProgram(){
-        switch (getId()){
-            case R.id.id_myprogram_tab:
-                //transfert.addMoreProgram(v);
-                Log.d("MainFrag","Inside mainFrag");
-
-                break;
-            default:
-                Log.d("MainFrag","Outside mainFrag");
-
-        }
-    }
 
 
     public  interface onFragmentBtnSelected{
