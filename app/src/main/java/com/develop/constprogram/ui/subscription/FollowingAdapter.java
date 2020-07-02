@@ -44,12 +44,13 @@ public class FollowingAdapter extends FirestoreRecyclerAdapter<FollowingModel, F
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
-        holder.name.setText(model.getUserIdentity());
+        holder.name.setText(model.getUserName());
 
       /*  Picasso.get().load(user.getPhotoUrl())
                 .placeholder(R.drawable.image_holder)
                 .fit().centerCrop().into(holder.image);*/
-            Picasso.get().load(R.drawable.image_holder).into(holder.image);
+      holder.image.setImageResource(R.drawable.image_holder);
+            //Picasso.get().load(R.drawable.image_holder).into(holder.image);
 
         holder.btnBlock.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,8 +93,8 @@ public class FollowingAdapter extends FirestoreRecyclerAdapter<FollowingModel, F
 
             switch (activityName){
                 case "Following":
-                    name=itemView.findViewById(R.id.followerName);
-                    image=itemView.findViewById(R.id.followerImage);
+                    name=itemView.findViewById(R.id.followingName);
+                    image=itemView.findViewById(R.id.followingImage);
                     btnBlock=itemView.findViewById(R.id.btnBlock);
                     btnDelete=itemView.findViewById(R.id.btnDelete);
 

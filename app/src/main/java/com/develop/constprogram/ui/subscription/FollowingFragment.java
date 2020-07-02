@@ -77,7 +77,7 @@ public class FollowingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_follower, container, false);
+        View view= inflater.inflate(R.layout.fragment_following, container, false);
         fragmentName="Following";
         setUpRecyclerView(view,fragmentName);
         return view;
@@ -85,7 +85,7 @@ public class FollowingFragment extends Fragment {
     private void setUpRecyclerView(View view, String fragment) {
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
 
-        Query query=  mFireStore.document(user.getDisplayName())
+        Query query=  mFireStore.document(user.getUid())
                 .collection("whofallowme");
         FirestoreRecyclerOptions<FollowingModel> options= new FirestoreRecyclerOptions.Builder<FollowingModel>()
                 .setQuery(query,FollowingModel.class)

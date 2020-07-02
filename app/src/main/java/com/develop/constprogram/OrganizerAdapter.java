@@ -2,6 +2,7 @@ package com.develop.constprogram;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
+import java.util.Objects;
+
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class OrganizerAdapter extends FirestoreRecyclerAdapter<OrganizerModel, OrganizerAdapter.OrganizerHolder> {
@@ -40,39 +43,48 @@ public class OrganizerAdapter extends FirestoreRecyclerAdapter<OrganizerModel, O
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull OrganizerHolder holder, int position, @NonNull final OrganizerModel model) {
+    protected void onBindViewHolder(@NonNull final OrganizerHolder holder, int position, @NonNull final OrganizerModel model) {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
-        holder.organizerName.setText(model.getOrganizerName());
-        holder.organizerIdentity.setText(model.getOrganizerIdentity());
 
-        if(model.getOrganizerCounterFollower()<=1){
-            holder.organizerCountFollower.setText(model.getOrganizerCounterFollower()+ "Follower");
-        }else{
-            holder.organizerCountFollower.setText(model.getOrganizerCounterFollower()+ "Followers");
-        }
-        holder.btnFollow.setText("Follow");
+        if(user.getUid()==holder.organizerIdentity.getText()){
 
-        if(user.getDisplayName()==model.getOrganizerName()){
-            Picasso.get().load(user.getPhotoUrl())
-                    .placeholder(R.drawable.image_holder)
-                    .fit().centerCrop().into(holder.organizerImage);
 
         }else{
-            Picasso.get().load(R.drawable.image_holder)
-                    .placeholder(R.drawable.image_holder)
-                    .fit().centerCrop().into(holder.organizerImage);
+            Log.d("testd", "they are diferent:"+ user.getUid()+" / " +model.getOrganizerIdentity());
+            holder.organizerName.setText(model.getOrganizerName());
+            holder.organizerIdentity.setText(model.getOrganizerIdentity());
+
+            if(model.getOrganizerCounterFollower()<=1){
+                holder.organizerCountFollower.setText(model.getOrganizerCounterFollower()+ " Follower");
+            }else{
+                holder.organizerCountFollower.setText(model.getOrganizerCounterFollower()+ " Followers");
+            }
+            holder.btnFollow.setText("Follow");
+
+            if(user.getDisplayName()==model.getOrganizerName()){
+                Picasso.get().load(user.getPhotoUrl())
+                        .placeholder(R.drawable.image_holder)
+                        .fit().centerCrop().into(holder.organizerImage);
+
+            }else{
+                Picasso.get().load(R.drawable.image_holder)
+                        .placeholder(R.drawable.image_holder)
+                        .fit().centerCrop().into(holder.organizerImage);
+            }
         }
+
+
 
 
 
         holder.btnFollow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "You Want to follow", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), holder.organizerIdentity.getText(), Toast.LENGTH_LONG).show();
                 FollowerModel followerModel = new FollowerModel();
-                followerModel.iFollowYou(model.getOrganizerIdentity());
+                followerModel.iFollowYou(model);
             }
         });
 

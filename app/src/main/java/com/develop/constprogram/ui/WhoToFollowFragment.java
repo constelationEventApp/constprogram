@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,6 +20,8 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -100,6 +103,7 @@ public class WhoToFollowFragment extends Fragment {
 
                 TextView identifiant = (TextView) v.findViewById(R.id.identifiantOrganizerList);
 
+                Toast.makeText(getActivity(), identifiant.getText(), Toast.LENGTH_LONG).show();
 
                 //  Toast.makeText(Recycle.this, identifiant.getText(), Toast.LENGTH_SHORT).show();
             }

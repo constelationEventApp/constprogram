@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -102,9 +103,11 @@ public class FollowerFragment extends Fragment {
             @Override
             public void onItemClick(int position, View v) {
 
+                TextView organizerId=v.findViewById(R.id.organizerId);
+                Toast.makeText(getActivity(),organizerId.getText().toString(), Toast.LENGTH_LONG).show();
 
 
-                //  Toast.makeText(Recycle.this, identifiant.getText(), Toast.LENGTH_SHORT).show();
+                  //Toast.makeText(Recycle.this, identifiant.getText(), Toast.LENGTH_SHORT).show();
             }
 
             @Override

@@ -44,9 +44,9 @@ public class OrganizerModel {
     }
 
 
-    public void insertOrganizer(final OrganizerModel organizerModel, final String idProgram){
+    public void insertOrganizer(){
         //Test if organizer is already insert
-        DocumentReference docRef = mFireStore.document(organizerModel.getOrganizerName());
+       /* DocumentReference docRef = mFireStore.document(organizerModel.getOrganizerName());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -55,14 +55,19 @@ public class OrganizerModel {
                     if (document.exists()) {
                         Log.d(TAG, "Organiser Already inserted");
                     } else {
-                        Log.d(TAG, "No such document");
+                        Log.d(TAG, "No such document");*/
                     //No such document insert
-                        mFireStore.document(organizerModel.getOrganizerName()).set(organizerModel)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                OrganizerModel organizer = new OrganizerModel();
+                organizer.setOrganizerIdentity(user.getUid());
+                organizer.setOrganizerName(user.getDisplayName());
+                        mFireStore.document(user.getUid())
+                                .set(organizer);
+
+                                /*add(organizer)
+                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Log.d(TAG, "DocumentSnapshot successfully written!");
-                                        Log.d(TAG, "Insert organizer is successful");
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        updateOrganizerIdentity(documentReference.getId());
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
@@ -71,16 +76,29 @@ public class OrganizerModel {
                                         //Log.w(TAG, "Error adding document", e);
                                     }
                                 });
-                        //end insert
+*/
 
+                        //end insert
+/*
                     }
                 } else {
                     Log.d(TAG, "get failed with ", task.getException());
                 }
             }
-        });
+        });*/
     }
+    public void updateOrganizerIdentity(String idDocument){
+        mFireStore= FirebaseFirestore.getInstance().collection("organizer");
+        mFireStore.document(idDocument)
+                .update("organizerIdentity", idDocument)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "Update whoIFollowdentity is successful");
+                    }
+                });
 
+    }
     public String getOrganizerIdentity() {
         return organizerIdentity;
     }

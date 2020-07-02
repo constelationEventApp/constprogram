@@ -20,13 +20,17 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 public class FollowingModel {
     private String userIdentity;
+    private String userName;
     private String organizerIdentity;
     private FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
     private CollectionReference mFireStore;
+    private String setOrganizerNameRef;
     private String TAG="Follow Model";
 
-    public FollowingModel(String userIdentity, String organizerIdentity) {
+    public FollowingModel(String userIdentity, String userName, String organizerRef) {
         this.userIdentity = userIdentity;
+        this.userName=userName;
+        this.setOrganizerNameRef=organizerRef;
 
         mFireStore= FirebaseFirestore.getInstance().collection("organizer");
 
@@ -37,10 +41,11 @@ public class FollowingModel {
 
     }
 
-    public void youFollowMe(String organizerName){
-        com.develop.constprogram.WhoFollowMeModel followModel= new com.develop.constprogram.WhoFollowMeModel();
+    public void youFollowMe(String organizerIdentity){
+        FollowingModel followModel= new FollowingModel();
         followModel.setUserIdentity(user.getUid());
-        mFireStore.document(organizerName)
+        followModel.setUserName(user.getDisplayName());
+        mFireStore.document(organizerIdentity)
                 .collection("whofallowme")
                 .document(user.getUid()).set(followModel)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -58,14 +63,34 @@ public class FollowingModel {
 
     }
 
-    public void youUnFollowMe(String organizerName){
-        mFireStore.document(organizerName)
+    public void youUnFollowMe(final String organizerIdentity){
+
+
+        mFireStore.document(organizerIdentity)
                 .collection("whofallowme")
                 .document(user.getUid()).delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "Yes you unfollow me");
+                        CollectionReference mFireStore= FirebaseFirestore.getInstance().collection("users");
+                        mFireStore.document(user.getUid())
+                                .collection("whoifollow");
+                                mFireStore.document(organizerIdentity).delete()
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.w(TAG, "Error deleting document", e);
+                                    }
+                                });
+                       /* Log.d(TAG, "Yes you unfollow me");
+                        FollowerModel followerModel = new FollowerModel();
+                        followerModel.iUnFollowYou(organizerNameRef);*/
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -102,7 +127,13 @@ public class FollowingModel {
     }
 
 
+    public String getUserName() {
+        return userName;
+    }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public String getUserIdentity() {
         return userIdentity;
@@ -111,5 +142,6 @@ public class FollowingModel {
     public void setUserIdentity(String userIdentity) {
         this.userIdentity = userIdentity;
     }
+
 }
 

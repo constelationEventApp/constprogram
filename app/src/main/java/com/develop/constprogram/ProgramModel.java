@@ -224,9 +224,8 @@ public class ProgramModel {
                          userInfoModel.insertUserProgram(documentReference.getId(),userId);
                          //Insert orgnizer name
                          OrganizerModel organizerModel= new OrganizerModel();
-                         organizerModel.setOrganizerName(programModel.getProgramOrganizer());
 
-                         organizerModel.insertOrganizer(organizerModel,documentReference.getId());
+                         organizerModel.insertOrganizer();
 
                      }
                  })

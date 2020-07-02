@@ -40,11 +40,12 @@ public class FollowerAdapter extends FirestoreRecyclerAdapter<FollowerModel, Fol
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull FollowerHolder holder, int position, @NonNull FollowerModel model) {
+    protected void onBindViewHolder(@NonNull FollowerHolder holder, int position, @NonNull final FollowerModel model) {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
-        holder.name.setText(model.getOrganizerIdentity());
+        holder.name.setText(model.getOrganizerName());
+        holder.identite.setText(model.getIdentityOrganizer());
 
        /* Picasso.get().load(user.getPhotoUrl())
                 .placeholder(R.drawable.image_holder)
@@ -55,8 +56,9 @@ public class FollowerAdapter extends FirestoreRecyclerAdapter<FollowerModel, Fol
         holder.btnUnfollow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "You Want to Unfollow", Toast.LENGTH_LONG).show();
-
+                Toast.makeText(getApplicationContext(), model.getIdentityOrganizer(), Toast.LENGTH_LONG).show();
+                FollowerModel followerModel = new FollowerModel();
+                followerModel.iUnFollowYou(model);
             }
         });
 
@@ -72,6 +74,7 @@ public class FollowerAdapter extends FirestoreRecyclerAdapter<FollowerModel, Fol
     class FollowerHolder extends RecyclerView.ViewHolder  implements View.OnClickListener, View.OnLongClickListener{
         TextView name;
         ImageView image;
+        TextView identite;
         Button btnUnfollow;
 
         public  FollowerHolder(View itemView){
@@ -83,6 +86,7 @@ public class FollowerAdapter extends FirestoreRecyclerAdapter<FollowerModel, Fol
             switch (activityName){
                 case "Follower":
                     name=itemView.findViewById(R.id.followerName);
+                    identite=itemView.findViewById(R.id.organizerId);
                     image=itemView.findViewById(R.id.followerImage);
                     btnUnfollow=itemView.findViewById(R.id.btnUnfollow);
 
